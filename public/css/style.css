@@ -183,7 +183,7 @@ body {
   width: 75%;
   margin: 0 auto;
 }
-@media only screen and (max-width: 56.25em) {
+@media only screen and (max-width: 70.5em) {
   .heading-primary {
     font-size: 3.7rem;
     width: 100%;
@@ -368,7 +368,7 @@ body {
     0 100%
   );
 }
-@media only screen and (max-width: 62.5em) {
+@media only screen and (max-width: 37.25em) {
   .section-header {
     height: 65vw;
   }
@@ -456,7 +456,7 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
-@media only screen and (max-width: 62.5em) {
+@media only screen and (max-width: 37.5em) {
   .section-description {
     flex-direction: column;
   }
