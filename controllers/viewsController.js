@@ -12,11 +12,21 @@ exports.alerts = (req, res, next) => {
   next();
 };
 
-exports.getHome = (req, res) => {
+exports.getHome = catchAsync(async (req, res) => {
+  const tours = await Tour.aggregate([
+    {
+      $sort: { createdAt: -1 },
+    },
+    {
+      $limit: 3,
+    },
+  ]);
+
   res.status(200).render('home', {
     title: 'Exciting tours for adventurous people',
+    tours,
   });
-};
+});
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection

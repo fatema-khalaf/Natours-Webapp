@@ -4,9 +4,9 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900", rel="stylesheet")
-    link(rel="stylesheet", href="css/icon-font.css")
-    link(rel="stylesheet", href="css/style.comp.css")
-    link(rel="shortcut icon", type="image/png", href="/img/favicon.png")
+    link(rel="stylesheet", href="/css/icon-font.css")
+    link(rel="stylesheet", href="/css/style.comp.css")
+    link(rel="shortcut icon", type="/image/png", href="/img/favicon.png")
     title Natours | Exciting tours for adventurous people
   body
     include _navigation
@@ -18,7 +18,7 @@ html(lang="en")
         h1.heading-primary
           span.heading-primary--main Outdoors
           span.heading-primary--sub is where life happens
-        a.btn.btn--white.btn--animated(href="#") Discover our tours
+        a.btn.btn--white.btn--animated(href="/") Discover our tours
      
     main
       section.section-about
@@ -40,7 +40,7 @@ html(lang="en")
               | Lorem ipsum dolor sit amet consectetur adipisicing elit.
               | Repellendus nostrum dolore temporibus sint provident earum?
               | Veritatis sint?
-            a.btn-text(href="#") Learn more &amp;rarr;
+            a.btn-text(href="/") Learn more &rarr;
           .col-1-of-2
             .composition
               img(srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w", sizes="(max-width:56.25em) 20vw, (max-width:37.5em) 30vw, 300vw", alt="photo-1", class="composition__photo composition__photo--p1", src="img/nat-1-large.jpg")
@@ -101,62 +101,74 @@ html(lang="en")
           .col-1-of-3
             .card
               div(class="card__side card__side--front")
-                div(class="card__picture card__picture--1")
+                div.card__picture
+                  div(class="card__picture-overlay-1")
+                 
+                  img.card__picture-img(src=`/img/tours/${tours[0].imageCover}`, alt='#')
+                //- div(class="card__picture card__picture--1")
                 h4(class="card__heading")
-                  span(class="card__heading-span card__heading-span--1") The See Explorer
+                  span(class="card__heading-span card__heading-span--1")= tours[0].name
                 div(class="card__details")
                   ul
-                    li 3 day tour
-                    li Up to 30 people
-                    li 2 tour guides
-                    li Sleep in cozy hotels
-                    li Difficulty: easy
+                    li #{tours[0].duration} day tour
+                    li Up to #{tours[0].maxGroupSize} people
+                    - const g =  tours[0].guides.length
+                    li #{g} tour guides
+                    li #{tours[0].startLocation.description}
+                    li Difficulty: #{tours[0].difficulty}
               div(class="card__side card__side--back card__side--back-1")
                 div(class="card__cta")
                   div(class="card__price-box")
                     p(class="card__price-only") Only
-                    p(class="card__price-value") $297
-                  a.btn.btn--white(href="#popup") Book now!
+                    p(class="card__price-value") $#{tours[0].price}
+                  a.btn.btn--white(href=`/tour/${tours[0].slug}`) More Details
           .col-1-of-3
             .card
               div(class="card__side card__side--front")
-                div(class="card__picture card__picture--2")
+                div.card__picture
+                  div(class="card__picture-overlay-2")
+                  img.card__picture-img(src=`/img/tours/${tours[1].imageCover}`, alt='#')
                 h4(class="card__heading")
-                  span(class="card__heading-span card__heading-span--2") The Forest hiker
+                  span(class="card__heading-span card__heading-span--2")= tours[1].name
                 div(class="card__details")
                   ul
-                    li 7 day tour
-                    li Up to 40 people
-                    li 6 tour guides
-                    li Sleep in provided tents
-                    li Difficulty: medium
+                    li #{tours[1].duration} day tour
+                    li Up to #{tours[1].maxGroupSize} people
+                    - const g1 =  tours[1].guides.length
+                    li #{g1} tour guides
+                    li #{tours[1].startLocation.description}
+                    li Difficulty: #{tours[1].difficulty}
               div(class="card__side card__side--back card__side--back-2")
                 div(class="card__cta")
                   div(class="card__price-box")
                     p(class="card__price-only") Only
-                    p(class="card__price-value") $497
-                  a.btn.btn--white(href="#popup") Book now!
+                    p(class="card__price-value") $#{tours[1].price}
+                  a.btn.btn--white(href=`/tour/${tours[1].slug}`) More Details
           .col-1-of-3
             .card
               div(class="card__side card__side--front")
-                div(class="card__picture card__picture--3")
+                div.card__picture
+                    div(class="card__picture-overlay-3")
+                    img.card__picture-img(src=`/img/tours/${tours[2].imageCover}`, alt='#')
+                //- div(class="card__picture card__picture--3")
                 h4(class="card__heading")
-                  span(class="card__heading-span card__heading-span--3") The snow adventuer
+                  span(class="card__heading-span card__heading-span--3")= tours[2].name
                 div(class="card__details")
                   ul
-                    li 5 day tour
-                    li Up to 15 people
-                    li 3 tour guides
-                    li Sleep in provided tents
-                    li Difficulty: hard
+                    li #{tours[2].duration} day tour
+                    li Up to #{tours[2].maxGroupSize} people
+                    - const g2 =  tours[2].guides.length
+                    li #{g2} tour guides
+                    li #{tours[2].startLocation.description}
+                    li Difficulty: #{tours[2].difficulty}
               div(class="card__side card__side--back card__side--back-3")
                 div(class="card__cta")
                   div(class="card__price-box")
                     p(class="card__price-only") Only
-                    p(class="card__price-value") $897
-                  a.btn.btn--white(href="#popup") Book now!
+                    p(class="card__price-value") $#{tours[2].price}
+                  a.btn.btn--white(href=`/tour/${tours[2].slug}`) More Details
         .u-center-text.u-margin-top-huge
-          a.btn.btn--green(href="#") Discover all tours
+          a.btn.btn--green(href="/") Discover all tours
       section.section-stories
         .bg-video
           video(class="bg-video__content", autoplay, muted, loop)
@@ -192,7 +204,7 @@ html(lang="en")
                 | dolorem similique reprehenderit exercitationem id aliquid culpa
                 | obcaecati dolorum harum rerum tempora officiis voluptas!
         .u-center-text.u-margin-top-huge
-          a.btn-text(href="#") Read all stories&amp;rarr;
+          a.btn-text(href="/") See all tours&rarr;
       section.section-book
         .row
           .book
@@ -247,7 +259,7 @@ html(lang="en")
             | Built by
             a(href="#", class="footer__link") Fatema Khalaf
             | .
-            | Copyright &amp;copy; by Fatema Khalaf. You are 100% allowed to use this
+            | Copyright &copy; by Fatema Khalaf. You are 100% allowed to use this
             | webpage for both personal and commercial use, but NOT to claim it as
             | your own design. A credit to the original designer, Jonas
             | Schmedtmann, and developer, Fatema Kahalf, is of course highly
@@ -262,7 +274,7 @@ html(lang="en")
           h2.heading-secondary.u-margin-bottom-small
             | Start booking now
           h3.heading-tertiary.u-margin-bottom-small
-            | Important &amp;ndash; Please read these terms before booking
+            | Important &ndash; Please read these terms before booking
           p(class="popup__text")
             | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis
             | aperiam, fuga maiores laborum dignissimos veniam quasi ad nesciunt
