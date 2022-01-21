@@ -27,6 +27,16 @@ html {
   box-sizing: border-box;
 }
 
+@media only screen and (max-width: 62.5em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
 body {
   line-height: 1.6;
   font-weight: 300;
@@ -146,6 +156,7 @@ body {
   text-transform: uppercase;
   font-weight: 300;
 }
+
 .heading-primary span,
 .heading-tertirary span {
   padding: 1rem 1.5rem;
@@ -169,8 +180,14 @@ body {
 .heading-primary {
   font-size: 5rem;
   text-align: center;
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
+}
+@media only screen and (max-width: 56.25em) {
+  .heading-primary {
+    font-size: 3.7rem;
+    width: 100%;
+  }
 }
 
 .heading-tertirary {
@@ -695,6 +712,11 @@ body {
   -webkit-box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
   box-shadow: 0 3rem 8rem 0.5rem rgba(0, 0, 0, 0.15);
 }
+@media only screen and (max-width: 37.5em) {
+  .cta {
+    padding: 19rem 5rem 9rem 5rem;
+  }
+}
 .cta__img {
   height: 15rem;
   width: 15rem;
@@ -704,6 +726,12 @@ body {
   border-radius: 50%;
   -webkit-box-shadow: 1rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
   box-shadow: 1rem 0.5rem 3rem rgba(0, 0, 0, 0.15);
+}
+@media only screen and (max-width: 37.5em) {
+  .cta__img {
+    top: 22%;
+    left: 38%;
+  }
 }
 .cta__img--logo {
   padding: 2rem;
@@ -750,6 +778,12 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+@media only screen and (max-width: 56.25em) {
+  .cta__content {
+    display: flex;
+    flex-direction: column;
+  }
 }
 .cta__text {
   font-size: 1.9rem;
@@ -1080,7 +1114,7 @@ body {
   display: grid;
   /* grid-template-columns: repeat(3, 1fr); */
   grid-gap: 7rem;
-  grid-template-columns: repeat(auto-fit, minmax(336px, 348px));
+  grid-template-columns: repeat(auto-fit, minmax(27.1rem, 348px));
   align-content: space-evenly;
   justify-content: center;
 }
