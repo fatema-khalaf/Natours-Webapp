@@ -1,0 +1,278 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900", rel="stylesheet")
+    link(rel="stylesheet", href="css/icon-font.css")
+    link(rel="stylesheet", href="css/style.comp.css")
+    link(rel="shortcut icon", type="image/png", href="/img/favicon.png")
+    title Natours | Exciting tours for adventurous people
+  body
+    include _navigation
+    
+    header.header
+      div(class="header__logo-box")
+        img(src="/img/logo-white.png", alt="Logo", class="header__logo")
+      div(class="header__text-box")
+        h1.heading-primary
+          span.heading-primary--main Outdoors
+          span.heading-primary--sub is where life happens
+        a.btn.btn--white.btn--animated(href="#") Discover our tours
+     
+    main
+      section.section-about
+        .u-center-text.u-margin-bottom-big
+          h2.heading-secondary
+            | Excitingtours for adventurous people
+        .row
+          .col-1-of-2
+            h3.heading-tertiary.u-margin-bottom-small
+              | You&apos;re going to fall in love with nature
+            p.paragraph
+              | Lpsum dolor sit amet consectetur adipisicing elit. Repudiandae
+              | modi harum fuga distinctio facilis delectus doloremque. Odit
+              | repudiandae fugit neque voluptatum consequatur mollitia, quo quas
+              | provident, ad quae totam magnam!
+            h3.heading-tertiary.u-margin-bottom-small
+              | Live adventures like you never have before
+            p.paragraph
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              | Repellendus nostrum dolore temporibus sint provident earum?
+              | Veritatis sint?
+            a.btn-text(href="#") Learn more &amp;rarr;
+          .col-1-of-2
+            .composition
+              img(srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w", sizes="(max-width:56.25em) 20vw, (max-width:37.5em) 30vw, 300vw", alt="photo-1", class="composition__photo composition__photo--p1", src="img/nat-1-large.jpg")
+              img(srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w", sizes="(max-width:56.25em) 20vw, (max-width:37.5em) 30vw, 300vw", alt="photo-2", class="composition__photo composition__photo--p2", src="img/nat-2-large.jpg")
+              img(srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w", sizes="(max-width:56.25em) 20vw, (max-width:37.5em) 30vw, 300vw", alt="photo-3", class="composition__photo composition__photo--p3", src="img/nat-3-large.jpg")
+              //
+                <img
+                src="img/nat-1-large.jpg"
+                alt="Photo 1"
+                class="composition__photo composition__photo--p1"
+                /><img
+                src="img/nat-2-large.jpg"
+                alt="Photo 2"
+                class="composition__photo composition__photo--p2"
+                /><img
+                src="img/nat-3-large.jpg"
+                alt="Photo 3"
+                class="composition__photo composition__photo--p3"
+                />
+      section.section-features
+        .row
+          .col-1-of-4
+            .feature-box
+              i(class="feature-box__icon icon-basic-world")
+              h3.heading-tertiary.u-margin-bottom-small
+                | Explore the world
+              p(class="feature-box__text")
+                | Ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+                | nostrum dolore temporibus
+          .col-1-of-4
+            .feature-box
+              i(class="feature-box__icon icon-basic-compass")
+              h3.heading-tertiary.u-margin-bottom-small
+                | Meet nature
+              p(class="feature-box__text")
+                | Ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+                | nostrum dolore temporibus
+          .col-1-of-4
+            .feature-box
+              i(class="feature-box__icon icon-basic-map")
+              h3.heading-tertiary.u-margin-bottom-small
+                | Find your way
+              p(class="feature-box__text")
+                | Ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+                | nostrum dolore temporibus
+          .col-1-of-4
+            .feature-box
+              i(class="feature-box__icon icon-basic-heart")
+              h3.heading-tertiary.u-margin-bottom-small
+                | Live a healthier life
+              p(class="feature-box__text")
+                | Ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+                | nostrum dolore temporibus
+      section#section-tours.section-tours
+        .u-center-text.u-margin-bottom-big
+          h2.heading-secondary Most popular tours
+        .row
+          .col-1-of-3
+            .card
+              div(class="card__side card__side--front")
+                div(class="card__picture card__picture--1")
+                h4(class="card__heading")
+                  span(class="card__heading-span card__heading-span--1") The See Explorer
+                div(class="card__details")
+                  ul
+                    li 3 day tour
+                    li Up to 30 people
+                    li 2 tour guides
+                    li Sleep in cozy hotels
+                    li Difficulty: easy
+              div(class="card__side card__side--back card__side--back-1")
+                div(class="card__cta")
+                  div(class="card__price-box")
+                    p(class="card__price-only") Only
+                    p(class="card__price-value") $297
+                  a.btn.btn--white(href="#popup") Book now!
+          .col-1-of-3
+            .card
+              div(class="card__side card__side--front")
+                div(class="card__picture card__picture--2")
+                h4(class="card__heading")
+                  span(class="card__heading-span card__heading-span--2") The Forest hiker
+                div(class="card__details")
+                  ul
+                    li 7 day tour
+                    li Up to 40 people
+                    li 6 tour guides
+                    li Sleep in provided tents
+                    li Difficulty: medium
+              div(class="card__side card__side--back card__side--back-2")
+                div(class="card__cta")
+                  div(class="card__price-box")
+                    p(class="card__price-only") Only
+                    p(class="card__price-value") $497
+                  a.btn.btn--white(href="#popup") Book now!
+          .col-1-of-3
+            .card
+              div(class="card__side card__side--front")
+                div(class="card__picture card__picture--3")
+                h4(class="card__heading")
+                  span(class="card__heading-span card__heading-span--3") The snow adventuer
+                div(class="card__details")
+                  ul
+                    li 5 day tour
+                    li Up to 15 people
+                    li 3 tour guides
+                    li Sleep in provided tents
+                    li Difficulty: hard
+              div(class="card__side card__side--back card__side--back-3")
+                div(class="card__cta")
+                  div(class="card__price-box")
+                    p(class="card__price-only") Only
+                    p(class="card__price-value") $897
+                  a.btn.btn--white(href="#popup") Book now!
+        .u-center-text.u-margin-top-huge
+          a.btn.btn--green(href="#") Discover all tours
+      section.section-stories
+        .bg-video
+          video(class="bg-video__content", autoplay, muted, loop)
+            source(src="img/video.mp4", type="video/mp4")
+            source(src="img/video.webm", type="video/webm")
+            | Your browser is not supported!
+        .u-center-text.u-margin-bottom-big
+          h2.heading-secondary WE make people genuinely happy
+        .row
+          .story
+            figure(class="story__shape")
+              img(src="img/nat-8.jpg", alt="person on a tour", class="story__img")
+              figcaption(class="story__caption") Mary Smeth
+            div(class="story__text")
+              h3.heading-tertiary.u-margin-bottom-small
+                | I had the best week ever with my family
+              p
+                | Lorem ipsum dolor sit amet consectetur, sunt asperiores quasi
+                | dolorem similique reprehenderit exercitationem id aliquid culpa
+                | dolorem similique reprehenderit exercitationem id aliquid culpa
+                | obcaecati dolorum harum rerum tempora officiis voluptas!
+        .row
+          .story
+            figure(class="story__shape")
+              img(src="img/nat-9.jpg", alt="person on a tour", class="story__img")
+              figcaption(class="story__caption") Jack Wilson
+            div(class="story__text")
+              h3.heading-tertiary.u-margin-bottom-small
+                | WOW ! My life is completely different now
+              p
+                | Lorem ipsum dolor sit amet consectetur, sunt asperiores quasi
+                | dolorem similique reprehenderit exercitationem id aliquid culpa
+                | dolorem similique reprehenderit exercitationem id aliquid culpa
+                | obcaecati dolorum harum rerum tempora officiis voluptas!
+        .u-center-text.u-margin-top-huge
+          a.btn-text(href="#") Read all stories&amp;rarr;
+      section.section-book
+        .row
+          .book
+            div(class="book__form")
+              form.form(action="#")
+                .u-margin-bottom-medium
+                  h2.heading-secondary Start Booking now
+                div(class="form__group")
+                  input#name(type="text", class="form__input", placeholder="Full Name", required)
+                  label(for="name", class="form__label") Full Name
+                div(class="form__group")
+                  input#email(type="email", class="form__input", placeholder="Email address", required)
+                  label(for="email", class="form__label") Email address
+                div(class="form__group u-margin-bottom-medium")
+                  div(class="form__radio-group")
+                    input#small(type="radio", class="form__radio-input", name="size")
+                    label(for="small", class="form__radio-label")
+                      span(class="form__radio-button")
+                      | Small tour
+                      | group
+                  div(class="form__radio-group")
+                    input#large(type="radio", class="form__radio-input", name="size")
+                    label(for="large", class="form__radio-label")
+                      span(class="form__radio-button")
+                      | Large tour group
+                div(class="form__goup")
+                  button.btn.btn--green Next step&amp;rarr;
+    footer.footer
+      div(class="footer__logo-box")
+        picture(class="footer__logo")
+          source(srcset="\
+              img/logo-green-small-1x.png 1x,\
+              img/logo-green-small-1x.png 1x\
+            ", media="(max-width:37.5em)")
+          img(srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x", alt="full logo", src="img/logo-green-2x.png")
+      .row
+        .col-1-of-2
+          div(class="footer__navigation")
+            ul(class="footer__list")
+              li(class="footer__item")
+                a(href="#", class="footer__link") Company
+              li(class="footer__item")
+                a(href="#", class="footer__link") Contact Us
+              li(class="footer__item")
+                a(href="#", class="footer__link") Carrers
+              li(class="footer__item")
+                a(href="#", class="footer__link") Privacy
+              li(class="footer__item")
+                a(href="#", class="footer__link") Terms
+        .col-1-of-2
+          p(class="footer__copyright")
+            | Built by
+            a(href="#", class="footer__link") Fatema Khalaf
+            | .
+            | Copyright &amp;copy; by Fatema Khalaf. You are 100% allowed to use this
+            | webpage for both personal and commercial use, but NOT to claim it as
+            | your own design. A credit to the original designer, Jonas
+            | Schmedtmann, and developer, Fatema Kahalf, is of course highly
+            | appreciated!
+    #popup.popup
+      div(class="popup__content")
+        div(class="popup__left")
+          img(src="img/nat-8.jpg", alt="Tour photo", class="popup__img")
+          img(src="img/nat-9.jpg", alt="Tour photo", class="popup__img")
+        div(class="popup__right")
+          a(href="#section-tours", class="popup__close") &amp;times;
+          h2.heading-secondary.u-margin-bottom-small
+            | Start booking now
+          h3.heading-tertiary.u-margin-bottom-small
+            | Important &amp;ndash; Please read these terms before booking
+          p(class="popup__text")
+            | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis
+            | aperiam, fuga maiores laborum dignissimos veniam quasi ad nesciunt
+            | esse eveniet? Adipisci dignissimos tempora totam, obcaecati
+            | exercitationem esse. Numquam, aliquid voluptas. Tenetur veniam
+            | cupiditate consectetur, odio veritatis nisi, quos modi minus aperiam
+            | laudantium saepe itaque dolore id. Vitae commodi doloremque minima
+            | necessitatibus aut. Numquam, aliquid voluptas. Tenetur veniam
+            | cupiditate consectetur, odio veritatis nisi, quos modi minus aperiam
+            | laudantium saepe itaque dolore id. Vitae commodi doloremque minima
+            | necessitatibus aut.
+          a.btn.btn--green(href="#") Book now
+ 

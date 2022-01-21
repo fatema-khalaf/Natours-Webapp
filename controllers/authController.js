@@ -152,6 +152,8 @@ exports.isLoggedIn = async (req, res, next) => {
       return next();
     }
   }
+  res.locals.page = req.originalUrl;
+  console.log('😵😵', req.originalUrl);
   next();
 };
 
