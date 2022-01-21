@@ -1408,7 +1408,7 @@ body {
   margin-right: 5rem;
   margin-left: 5rem;
   grid-gap: 5rem;
-  grid-template-columns: repeat(auto-fit, minmax(406px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   justify-items: center;
 }
 .navigation-home {
