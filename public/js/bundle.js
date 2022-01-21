@@ -9354,7 +9354,7 @@ var mapBox = document.getElementById('map');
 var loginForm = document.querySelector('.form--login');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
-var logOutBtn = document.querySelector('.nav__el--logout');
+var logOutBtn = document.querySelectorAll('.nav__el--logout');
 var bookBtn = document.getElementById('book-tour'); // DELEGATION
 
 if (mapBox) {
@@ -9423,7 +9423,9 @@ if (userPasswordForm) {
   }());
 }
 
-if (logOutBtn) logOutBtn.addEventListener('click', _login.logout);
+if (logOutBtn) logOutBtn.forEach(function (el) {
+  return el.addEventListener('click', _login.logout);
+});
 if (bookBtn) bookBtn.addEventListener('click', function (e) {
   e.target.textContent = 'Processing...'; // e.target => the cliked element (bookBtn)
 

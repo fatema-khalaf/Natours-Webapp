@@ -15,7 +15,7 @@ else
               img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of${user.name}`)
               span= user.name.split(' ')[0]
           li(class="navigation__item")
-            a(href='#' class="navigation__link")
+            a(href='#' class="navigation__link nav__el--logout")
               span 01
               | LOG out
         else

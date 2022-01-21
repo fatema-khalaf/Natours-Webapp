@@ -9,7 +9,7 @@ const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
-const logOutBtn = document.querySelector('.nav__el--logout');
+const logOutBtn = document.querySelectorAll('.nav__el--logout');
 const bookBtn = document.getElementById('book-tour');
 
 // DELEGATION
@@ -57,7 +57,7 @@ if (userPasswordForm) {
   });
 }
 
-if (logOutBtn) logOutBtn.addEventListener('click', logout);
+if (logOutBtn) logOutBtn.forEach((el) => el.addEventListener('click', logout));
 
 if (bookBtn)
   bookBtn.addEventListener('click', (e) => {
