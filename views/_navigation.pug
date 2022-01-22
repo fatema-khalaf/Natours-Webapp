@@ -1,6 +1,8 @@
 
 if page === 'home'
   .navigation-home
+else if page ==='/me'
+  .navigation-me
 else
   .navigation
     input#navi-toggle(type="checkbox", class="navigation__checkbox")
@@ -9,30 +11,35 @@ else
     div(class="navigation__background")
     nav(class="navigation__nav")
       ul(class="navigation__list")
+        li(class="navigation__item")
+          a(href='/home' class="navigation__link")
+            span 01
+            | home
+        li(class="navigation__item")
+          a(href='/' class="navigation__link")
+            span 02
+            | All tours 
+        
         if user
           li(class="navigation__item")
             a(href='/me' class="navigation__link")
-              img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of${user.name}`)
-              span= user.name.split(' ')[0]
+                span 03
+                | My account
+            //- a(href='/me' class="navigation__link")
+            //-   img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of${user.name}`)
+            //-   span= user.name.split(' ')[0]
           li(class="navigation__item")
             a(href='#' class="navigation__link nav__el--logout")
-              span 01
+              span 04
               | LOG out
         else
           li(class="navigation__item")
             a(href='#' class="navigation__link")
-              span 02
+              span 03
               | sign up
           li(class="navigation__item")
             a(href='/login' class="navigation__link")
-              span 02
+              span 04
               | log in
-        li(class="navigation__item")
-          a(href='/' class="navigation__link")
-            span 02
-            | All tours
-        li(class="navigation__item")
-          a(href='/home' class="navigation__link")
-            span 03
-            | home
+        
  

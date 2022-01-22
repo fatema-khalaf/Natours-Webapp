@@ -813,6 +813,11 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+@media only screen and (max-width: 37.25em) {
+  .user-view {
+    flex-direction: column;
+  }
+}
 .user-view__menu {
   -webkit-box-flex: 32rem;
   -ms-flex: 32rem 0 0px;
@@ -826,6 +831,12 @@ body {
   );
   background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
   padding: 4rem 0;
+}
+@media only screen and (max-width: 56.25em) {
+  .user-view__menu {
+    flex: 7rem 0 0;
+    padding: 2rem 0;
+  }
 }
 .user-view__content {
   -webkit-box-flex: 1;
@@ -1063,6 +1074,12 @@ body {
 .side-nav {
   list-style: none;
 }
+@media only screen and (max-width: 56.25em) {
+  .side-nav {
+    display: none;
+  }
+}
+
 .side-nav li {
   margin: 1rem 0;
   border-left: 0 solid #fff;
@@ -1105,9 +1122,25 @@ body {
   fill: #f7f7f7;
   margin-right: 2rem;
 }
-
+.menu-icon {
+  height: 3rem;
+  width: 3.5rem;
+  margin-left: 1.7rem;
+  fill: #f7f7f7;
+  display: none;
+}
+@media only screen and (max-width: 56.25em) {
+  .menu-icon {
+    display: unset;
+  }
+}
 .admin-nav {
   margin-top: 5.5rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .admin-nav {
+    display: none;
+  }
 }
 .admin-nav__heading {
   margin: 0 5rem 1.5rem 4rem;
@@ -1463,6 +1496,9 @@ body {
 .navigation-home {
   display: unset;
 }
+.navigation-me {
+  display: none;
+}
 .navigation {
   display: none;
 }
@@ -1526,6 +1562,7 @@ body {
 }
 
 .navigation__nav {
+  display: none;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -1586,6 +1623,7 @@ body {
 }
 
 .navigation__checkbox:checked ~ .navigation__nav {
+  display: unset;
   opacity: 1;
   width: 100%;
 }
@@ -1636,4 +1674,16 @@ body {
 .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
   top: 0;
   transform: rotate(-135deg);
+}
+
+.display {
+  display: unset;
+}
+.flex-width {
+  flex: 32rem 0 0;
+  margin-right: -25rem;
+  z-index: 1;
+}
+.hide {
+  display: none;
 }

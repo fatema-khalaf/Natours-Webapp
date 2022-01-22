@@ -11,6 +11,35 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const logOutBtn = document.querySelectorAll('.nav__el--logout');
 const bookBtn = document.getElementById('book-tour');
+//const back = document.getElementById('back');
+const menuIcon = document.querySelector('.menu-icon');
+const adminNav = document.querySelector('.admin-nav');
+const sideNav = document.querySelectorAll('.side-nav');
+const userViewMenu = document.querySelector('.user-view__menu');
+const userViewContent = document.querySelector('.user-view__content');
+
+if (menuIcon) {
+  menuIcon.addEventListener('click', (e) => {
+    adminNav.classList.toggle('display');
+    sideNav.forEach((el) => el.classList.toggle('display'));
+    userViewMenu.classList.toggle('flex-width');
+    // if (menuIcon.firstChild === '<use xlink:href="/img/back.svg#Capa_1"></use>')
+    //   menuIcon.replaceChild(back, menuIcon.firstChild);
+    // console.log(
+    //   menuIcon.firstChild === '<use xlink:href="/img/menu.svg#Capa_1"></use>'
+    // );
+    //  menuIcon.firstChild = '<use>xlink:href="/img/back.svg#back"></use>';
+    //menuIcon.innerHTML = "<use xlink:href='/img/back.svg#back'/><use>";
+
+    // e.target.replaceWith($('<div>' + this.innerHTML + '</div>'));
+    //e.target.innerHTLM = ' <use xlink:href="/img/back.svg#back"></use>';
+  });
+  userViewContent.addEventListener('click', () => {
+    adminNav.classList.remove('display');
+    sideNav.forEach((el) => el.classList.remove('display'));
+    userViewMenu.classList.remove('flex-width');
+  });
+}
 
 // DELEGATION
 if (mapBox) {

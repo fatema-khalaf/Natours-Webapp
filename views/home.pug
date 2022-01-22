@@ -169,7 +169,7 @@ html(lang="en")
                   a.btn.btn--white(href=`/tour/${tours[2].slug}`) More Details
         .u-center-text.u-margin-top-huge
           a.btn.btn--green(href="/") Discover all tours
-      section.section-stories
+      section.section-stories#stories
         .bg-video
           video(class="bg-video__content", autoplay, muted, loop)
             source(src="img/video.mp4", type="video/mp4")
@@ -211,27 +211,27 @@ html(lang="en")
             div(class="book__form")
               form.form(action="#")
                 .u-margin-bottom-medium
-                  h2.heading-secondary Start Booking now
+                  h2.heading-secondary Subscribe for our newsletter
                 div(class="form__group")
                   input#name(type="text", class="form__input", placeholder="Full Name", required)
                   label(for="name", class="form__label") Full Name
                 div(class="form__group")
                   input#email(type="email", class="form__input", placeholder="Email address", required)
                   label(for="email", class="form__label") Email address
-                div(class="form__group u-margin-bottom-medium")
-                  div(class="form__radio-group")
-                    input#small(type="radio", class="form__radio-input", name="size")
-                    label(for="small", class="form__radio-label")
-                      span(class="form__radio-button")
-                      | Small tour
-                      | group
-                  div(class="form__radio-group")
-                    input#large(type="radio", class="form__radio-input", name="size")
-                    label(for="large", class="form__radio-label")
-                      span(class="form__radio-button")
-                      | Large tour group
+                //- div(class="form__group u-margin-bottom-medium")
+                //-   div(class="form__radio-group")
+                //-     input#small(type="radio", class="form__radio-input", name="size")
+                //-     label(for="small", class="form__radio-label")
+                //-       span(class="form__radio-button")
+                //-       | Small tour
+                //-       | group
+                //-   div(class="form__radio-group")
+                //-     input#large(type="radio", class="form__radio-input", name="size")
+                //-     label(for="large", class="form__radio-label")
+                //-       span(class="form__radio-button")
+                //-       | Large tour group
                 div(class="form__goup")
-                  button.btn.btn--green Next step&amp;rarr;
+                  button.btn.btn--green Subscribe
     footer.footer
       div(class="footer__logo-box")
         picture(class="footer__logo")
