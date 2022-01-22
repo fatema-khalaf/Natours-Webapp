@@ -20,7 +20,7 @@ const userViewContent = document.querySelector('.user-view__content');
 
 if (menuIcon) {
   menuIcon.addEventListener('click', (e) => {
-    adminNav.classList.toggle('display');
+    if (adminNav) adminNav.classList.toggle('display');
     sideNav.forEach((el) => el.classList.toggle('display'));
     userViewMenu.classList.toggle('flex-width');
     // let svg = document.createElement('svg');
