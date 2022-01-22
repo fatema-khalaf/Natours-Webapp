@@ -61,7 +61,11 @@ body {
   flex: 1;
   position: relative;
 }
-
+@media only screen and (max-width: 25.5em) {
+  .main {
+    padding: 3rem 2rem;
+  }
+}
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1098,7 +1102,7 @@ body {
 }
 @media only screen and (max-width: 56.25em) {
   .side-nav {
-    display: none;
+    z-index: -1500;
   }
 }
 
@@ -1161,7 +1165,8 @@ body {
 }
 @media only screen and (max-width: 56.25em) {
   .admin-nav {
-    display: none;
+    z-index: -1500;
+    /* display: none; */
   }
 }
 .admin-nav__heading {
@@ -1703,7 +1708,7 @@ body {
 }
 
 .display {
-  display: unset;
+  z-index: 1500;
 }
 .flex-width {
   flex: 32rem 0 0;
