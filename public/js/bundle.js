@@ -9369,15 +9369,10 @@ if (menuIcon) {
     sideNav.forEach(function (el) {
       return el.classList.toggle('display');
     });
-    userViewMenu.classList.toggle('flex-width'); // if (menuIcon.firstChild === '<use xlink:href="/img/back.svg#Capa_1"></use>')
-    //   menuIcon.replaceChild(back, menuIcon.firstChild);
-    // console.log(
-    //   menuIcon.firstChild === '<use xlink:href="/img/menu.svg#Capa_1"></use>'
-    // );
-    //  menuIcon.firstChild = '<use>xlink:href="/img/back.svg#back"></use>';
-    //menuIcon.innerHTML = "<use xlink:href='/img/back.svg#back'/><use>";
-    // e.target.replaceWith($('<div>' + this.innerHTML + '</div>'));
-    //e.target.innerHTLM = ' <use xlink:href="/img/back.svg#back"></use>';
+    userViewMenu.classList.toggle('flex-width'); // let svg = document.createElement('svg');
+    // svg.classList.add('menu-icon');
+    // svg.innerHTML = '<use xlink:href="img/icons.svg#icon-star"/><use>';
+    // userViewMenu.replaceChild(svg, userViewMenu.childNodes[0]);
   });
   userViewContent.addEventListener('click', function () {
     adminNav.classList.remove('display');
