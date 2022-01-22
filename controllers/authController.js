@@ -22,10 +22,10 @@ const createSendToken = (user, statusCode, req, res) => {
     ),
     httpOnly: true,
   };
-  // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
-  if (req.secure || req.headers('x-forwarded-proto' === 'https'))
-    cookieOptions.secure = true;
+  // if (req.secure || req.headers('x-forwarded-proto' === 'https'))
+  //   cookieOptions.secure = true;
   res.cookie('jwt', token, cookieOptions); // 'jwt' is just a name
   // Video-141
   ///////////////////////////////////////////////////////////////////////////
