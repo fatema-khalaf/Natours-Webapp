@@ -853,6 +853,11 @@ body {
   margin: 0 auto;
   padding: 0 8rem;
 }
+@media only screen and (max-width: 25.5em) {
+  .user-view__form-container {
+    padding: 3rem;
+  }
+}
 /* 
 .footer {
   background-color: #f7f7f7;
