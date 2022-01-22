@@ -1102,7 +1102,7 @@ body {
 }
 @media only screen and (max-width: 56.25em) {
   .side-nav {
-    z-index: -1500;
+    display: none;
   }
 }
 
@@ -1165,8 +1165,7 @@ body {
 }
 @media only screen and (max-width: 56.25em) {
   .admin-nav {
-    z-index: -1500;
-    /* display: none; */
+    display: none;
   }
 }
 .admin-nav__heading {
@@ -1708,7 +1707,7 @@ body {
 }
 
 .display {
-  z-index: 1500;
+  display: unset;
 }
 .flex-width {
   flex: 32rem 0 0;
