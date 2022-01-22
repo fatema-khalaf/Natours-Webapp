@@ -80,7 +80,10 @@ if (userPasswordForm) {
   });
 }
 
-if (logOutBtn) logOutBtn.forEach((el) => el.addEventListener('click', logout));
+console.log(logOutBtn);
+if (logOutBtn) {
+  logOutBtn.forEach((el) => el.addEventListener('click', logout));
+}
 
 if (bookBtn)
   bookBtn.addEventListener('click', (e) => {
