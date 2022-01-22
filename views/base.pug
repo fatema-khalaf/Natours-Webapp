@@ -8,7 +8,7 @@ html
         //- link(rel="stylesheet" href="css/style.comp.css")
         link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
         link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
-        script(src='https://js.stripe.com/v3/')
+        script(src='https://js.stripe.com/v3/' type="text/javascript")
         title Natours | #{title}
 
     body(data-alert=`${alert ? alert :''}`) 
@@ -26,7 +26,7 @@ html
     //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js')
     //- script(src='/js/mapbox.js')
     //- script(src='/js/login.js')
-    script(src='/js/bundle.js')
+    script(src='/js/bundle.js' type="text/javascript")
 
        
         
