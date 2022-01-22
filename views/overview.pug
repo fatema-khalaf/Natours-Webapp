@@ -3,7 +3,13 @@ block content
     main.main
         .u-margin-bottom-big
             h2.heading-secondary
-                | Exciting tours for adventurous people
+                if page !== '/my-tours'
+                    | Exciting tours for adventurous people
+                - const toursNum = tours.length;
+                if toursNum === 0
+                    | You don't have any tour 
+                if page === '/my-tours' && toursNum > 0
+                    | Enjoy Your Tours 
         .card-container 
             each tour in tours
                 .card
