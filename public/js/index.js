@@ -31,7 +31,7 @@ if (menuIcon) {
     // userViewMenu.replaceChild(svg, userViewMenu.childNodes[0]);
   });
   userViewContent.addEventListener('click', () => {
-    adminNav.classList.remove('display');
+    if (adminNav) adminNav.classList.remove('display');
     sideNav.forEach((el) => el.classList.remove('display'));
     userViewMenu.classList.remove('flex-width');
   });
