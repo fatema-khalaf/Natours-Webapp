@@ -61,7 +61,7 @@ body {
   flex: 1;
   position: relative;
 }
-@media only screen and (max-width: 25.5em) {
+@media only screen and (max-width: 37.25em) {
   .main {
     padding: 3rem 2rem;
   }
@@ -853,7 +853,7 @@ body {
   margin: 0 auto;
   padding: 0 8rem;
 }
-@media only screen and (max-width: 25.5em) {
+@media only screen and (max-width: 37.25em) {
   .user-view__form-container {
     padding: 3rem;
   }
@@ -1494,7 +1494,7 @@ body {
   margin-right: 5rem;
   margin-left: 5rem;
   grid-gap: 5rem;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   justify-items: center;
 }
 @media only screen and (max-width: 25.5em) {
