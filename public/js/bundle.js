@@ -8870,20 +8870,26 @@ var logout = /*#__PURE__*/function () {
 
           case 3:
             res = _context2.sent;
-            _context2.next = 9;
+
+            if (res.data.status === 'success') {
+              location.reload(true);
+              location.assign('/home');
+            }
+
+            _context2.next = 10;
             break;
 
-          case 6:
-            _context2.prev = 6;
+          case 7:
+            _context2.prev = 7;
             _context2.t0 = _context2["catch"](0);
             (0, _alert.showAlert)('error', 'Error logging out! Try again.');
 
-          case 9:
+          case 10:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[0, 6]]);
+    }, _callee2, null, [[0, 7]]);
   }));
 
   return function logout() {
@@ -9495,7 +9501,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61586" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49983" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
