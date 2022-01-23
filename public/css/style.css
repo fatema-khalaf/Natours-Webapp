@@ -1516,7 +1516,7 @@ body {
   margin-right: 5rem;
   margin-left: 5rem;
   grid-gap: 5rem;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   justify-items: center;
 }
 @media only screen and (max-width: 25.5em) {
