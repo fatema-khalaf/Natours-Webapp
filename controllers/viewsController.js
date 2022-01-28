@@ -66,6 +66,17 @@ exports.getAccount = (req, res) => {
   });
 };
 
+exports.getAlltours = catchAsync(async (req, res) => {
+  const tours = await Tour.find().populate({
+    path: 'reviews',
+    fields: 'review rating user',
+  });
+  res.status(200).render('manageTours', {
+    title: 'Manage Tours',
+    tours,
+  });
+});
+
 exports.getMyTours = catchAsync(async (req, res, next) => {
   // 1) Find all bookings
   const bookings = await Booking.find({ user: req.user.id });
