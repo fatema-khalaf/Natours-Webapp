@@ -1724,7 +1724,7 @@ body {
 #customers {
   border-collapse: collapse;
   width: 90%;
-  margin: 0 auto;
+  margin: 3rem auto;
 }
 
 #customers td,
@@ -1747,9 +1747,13 @@ body {
 }
 
 #customers tr:hover {
-  background-color: #ddd;
+  transform: scale(1.03);
+  background-color: #7dd56f3b;
 }
-
+.di {
+  fill: red;
+  margin-left: 2rem;
+}
 #customers th {
   padding-top: 12px;
   padding-bottom: 12px;

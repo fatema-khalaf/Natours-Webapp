@@ -7,20 +7,27 @@ block dash
       tr
         th Tour Name
         th Cover image
+        th Location
         th Price
         th Rating
         th Actions
       each tour in tours
         tr
           td=tour.name
-          td
+          td.tc
             img.form__user-photo(src=`/img/tours/${tour.imageCover}`, alt='User photo')
-          td=tour.price
-          td=tour.ratingsAverage
-          td
-            a(href="#") Edit
-            a(href="#") Delete
-     
+          td=tour.startLocation.description
+          td=`${tour.price} $`
+          td=`${tour.ratingsAverage} /5`
+          td.tc
+            a(href=`/tour/edit/${tour.slug}`)
+              svg.card__icon
+                use(xlink:href='img/icons.svg#icon-edit')
+            a(href=`/tour/delete/${tour.slug}`)
+              svg.card__icon.di
+                use(xlink:href='img/icons.svg#icon-delete')
+    .tc 
+      a.btn.btn--green.btn--small(href="#") Add tour
 
 
 
