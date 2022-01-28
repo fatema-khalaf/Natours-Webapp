@@ -66,6 +66,14 @@ exports.getSignupForm = (req, res) => {
   });
 };
 
+exports.getAlltours = catchAsync(async (req, res) => {
+  const tours = await Tour.find();
+  res.status(200).render('manageTours', {
+    title: 'Manage Tours',
+    tours,
+  });
+});
+
 exports.getAccount = (req, res) => {
   res.status(200).render('account', {
     title: 'Your account',

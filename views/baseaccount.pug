@@ -1,0 +1,35 @@
+extends base
+mixin navItem(link, text,icon,active)
+  li(class=`${active ? 'side-nav--active': ''}` )
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+block content 
+  main.main
+    .user-view
+      nav.user-view__menu
+        svg.menu-icon
+            use(xlink:href='/img/menu.svg#Capa_1')
+        ul.side-nav
+
+          +navItem('/home', 'Home', 'home') 
+          +navItem('/', 'All tours', 'image') 
+          +navItem('#', 'Settings', 'settings', true) 
+          +navItem('/my-tours', 'My bookings', 'briefcase') 
+          +navItem('#', 'My reviews', 'star') 
+          +navItem('#', 'Billing', 'credit-card') 
+          li(class=`${active ? 'side-nav--active': ''} nav__el--logout` )
+            a(href='#')
+              svg
+                use(xlink:href=`img/icons.svg#icon-star`)
+              | Log out
+        - if (user.role === 'admin') 
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('/manageTours', 'Manage tours', 'map') 
+              +navItem('#', 'Manage users', 'users') 
+              +navItem('#', 'Manage reviews', 'star') 
+              +navItem('#', 'Manage bookings', 'briefcase') 
+      block dash

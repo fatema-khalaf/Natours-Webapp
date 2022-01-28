@@ -20,7 +20,12 @@ router.get('/signup', authController.isLoggedIn, viewsController.getSignupForm);
 router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/my-tours', authController.protect, viewsController.getMyTours);
 router.get('/home', authController.isLoggedIn, viewsController.getHome);
-
+router.get(
+  '/manageTours',
+  authController.protect,
+  authController.restrictTo('admin'),
+  viewsController.getAlltours
+);
 // router.post(
 //   '/submit-user-data',
 //   authController.protect,
