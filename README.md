@@ -1,18 +1,22 @@
-Natours | Responsive web app
-Tours selling web app, the user can perform the following activities:
-
-1. create account
-2. review tours
-3. book tours
-4. compleate online payment
-5. recive auto sent emails
-6. add review
-7. rate tours
-   Technologies used:
-8. CSS, HTML and javascript.
-9. Node.js
-10. mongo DB
-11. mongoose
-12. express
-13. mail grid
-14. stripe
+<h1>Natours | Responsive web app</h1>
+<h3> Tours selling web app, the user can perform the following activities:</h3>
+<ul>
+<li> create account</li>
+   <li> review tours</li>
+   <li> book tours</li>
+   <li> compleate online payment</li>
+   <li> recive auto sent emails</li> 
+   <li> add review</li>
+   <li> rate tours</li>
+   </ul>
+<h3>Technologies used:</h3>
+<ul>
+   <li>CSS, HTML and javascript.</li>
+   <li>Node.js</li>
+   <li> mongo DB</li>
+   <li> mongoose</li>
+      <li> express</li>
+   <li> mail grid</li>
+   <li> stripe</li>
+   </ul>
+   To preview the website please click on 👉 <a href="https://natours-f.herokuapp.com/home"> Natours by Fatema</a>
