@@ -21,10 +21,16 @@ router.get('/me', authController.protect, viewsController.getAccount);
 router.get('/my-tours', authController.protect, viewsController.getMyTours);
 router.get('/home', authController.isLoggedIn, viewsController.getHome);
 router.get(
-  '/manageTours',
+  '/manage-tours',
   authController.protect,
   authController.restrictTo('admin'),
   viewsController.getAlltours
+);
+router.get(
+  '/add-tour',
+  authController.protect,
+  authController.restrictTo('admin'),
+  viewsController.getAddForm
 );
 // router.post(
 //   '/submit-user-data',

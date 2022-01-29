@@ -73,6 +73,14 @@ exports.getAlltours = catchAsync(async (req, res) => {
     tours,
   });
 });
+exports.getAddForm = catchAsync(async (req, res) => {
+  const guides = await User.find({ role: { $nin: ['admin', 'user'] } });
+  // console.log(guides);
+  res.status(200).render('addTour', {
+    title: 'Add New Tour',
+    guides,
+  });
+});
 
 exports.getAccount = (req, res) => {
   res.status(200).render('account', {

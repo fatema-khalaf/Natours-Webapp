@@ -1329,7 +1329,7 @@ body {
   display: block;
   font-family: inherit;
   font-size: 1.5rem;
-  color: inherit;
+  color: #777;
   padding: 1.25rem 1.75rem;
   border: none;
   width: 100%;
@@ -1743,4 +1743,28 @@ body {
   font-weight: 400;
   background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
   color: white;
+}
+.mb {
+  margin-bottom: 0.75rem;
+}
+.form__link {
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-weight: 400;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.form__link:hover,
+.form__link:active {
+  color: #55c57a;
+}
+.chek__group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.chek__group label {
+  display: inline-block;
+  margin-left: 1rem;
 }
