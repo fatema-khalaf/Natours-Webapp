@@ -1,0 +1,70 @@
+extends baseaccount
+block dash 
+  .user-view__content
+    .user-view__form-container
+      h2.heading-secondary.ma-bt-md Add New Tour
+      
+      form.form.form-user-data
+        .form__group
+          label.form__label(for='name') Tour Name
+          input#name.form__input(type='text', placeholder='tour name', required, name='name')
+        .form__group.ma-bt-md
+          label.form__label(for='duration') Duration
+          input#duration.form__input(type='text', placeholder='Duration', required, name='duration')
+        .form__group.ma-bt-md
+          label.form__label(for='difficulty') Difficulty
+          select#difficulty.form__input(name="difficulty", required)
+            option(value="easy") easy
+            option(value="medium") medium
+            option(value="difficult") difficult
+  
+        .form__group.ma-bt-md
+          label.form__label(for='maxGroupSize') Max Group Size
+          input#maxGroupSize.form__input(type='number', placeholder='10', required, name='maxGroupSize')
+        
+        .form__group.ma-bt-md
+          label.form__label(for='price') Price
+          input#price.form__input(type='number', placeholder='1', required, name='price')
+        
+        .form__group.ma-bt-md
+          label.form__label(for='summary') Summary
+          input#summary.form__input(type='text', placeholder='summary', required, name='summary')
+        
+        .form__group.ma-bt-md
+          label.form__label(for='description') Description
+          textarea#description.form__input(type='text',rows="6", placeholder='description', required, name='description')
+        
+        .form__group.ma-bt-md
+          label.form__label(for='startDates') Start Dates
+          input#startDates.mb.form__input(type='date', placeholder='start dates', required, name='startDates')
+          a#addDate.form__link(href='#') add another date
+        .form__group.ma-bt-md
+          label.form__label(for='startLocationDescription') Start Location Description
+          input#startLocationDescription.form__input(type='text', placeholder='Miami, USA', required, name='startLocationDescription')
+        .form__group.ma-bt-md
+          label.form__label(for='startLocationCoordinates') Start Location coordinates
+          input#startLocationCoordinates.form__input(type='text', placeholder='[-80.185942, 25.774772]', required, name='startLocationCoordinates')
+        .form__group.ma-bt-md
+          label.form__label(for='startLocationAddress') Start Location address
+          input#startLocationAddress.form__input(type='text', placeholder='301 Biscayne Blvd, Miami, FL 33132, USA', required, name='startLocationAddress')
+        
+        .form__group.ma-bt-md
+          label.form__label Guides
+          .chek__group
+            each guide in guides
+              .r
+                input#guides(type='checkbox', name=`${guide.id}`, value=`${guide.id}`)
+                label.form__label(for=`${guide.id}`) #{guide.name}
+          //- select#difficulty.form__input(name="difficulty", required)
+          //-   option(value="easy") easy
+          //-   option(value="medium") medium
+          //-   option(value="difficult") difficult
+        .form__group.form__photo-upload
+          img.form__user-photo(src='/img/users/default.jpg', alt='User photo')
+          input.form__upload(type='file', accept='image/*', id='imageCover', name='imageCover')
+          label(for='imageCover') Choose Cover Image 
+        .form__group.right
+          button.btn.btn--small.btn--green Save Tour
+    
+    .line &nbsp;
+    

@@ -11,6 +11,8 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const logOutBtn = document.querySelectorAll('.nav__el--logout');
 const bookBtn = document.getElementById('book-tour');
+const addDate = document.getElementById('addDate');
+const startDates = document.getElementById('startDates');
 //const back = document.getElementById('back');
 const menuIcon = document.querySelector('.menu-icon');
 const adminNav = document.querySelector('.admin-nav');
@@ -32,6 +34,15 @@ if (menuIcon) {
     if (adminNav) adminNav.classList.remove('display');
     sideNav.forEach((el) => el.classList.remove('display'));
     userViewMenu.classList.remove('flex-width');
+  });
+}
+
+if (addDate) {
+  addDate.addEventListener('click', (e) => {
+    const feild = `<input id="startDates" class ="form__input mb" type="date" placeholder="start dates" required name="startDates"/>`;
+    e.preventDefault();
+    console.log(e.target.parentElement);
+    e.target.insertAdjacentHTML('afterbegin', feild);
   });
 }
 

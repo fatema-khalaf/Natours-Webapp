@@ -9362,7 +9362,9 @@ var loginForm = document.querySelector('.form--login');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
 var logOutBtn = document.querySelectorAll('.nav__el--logout');
-var bookBtn = document.getElementById('book-tour'); //const back = document.getElementById('back');
+var bookBtn = document.getElementById('book-tour');
+var addDate = document.getElementById('addDate');
+var startDates = document.getElementById('startDates'); //const back = document.getElementById('back');
 
 var menuIcon = document.querySelector('.menu-icon');
 var adminNav = document.querySelector('.admin-nav');
@@ -9387,6 +9389,15 @@ if (menuIcon) {
       return el.classList.remove('display');
     });
     userViewMenu.classList.remove('flex-width');
+  });
+}
+
+if (addDate) {
+  addDate.addEventListener('click', function (e) {
+    var feild = "<input id=\"startDates\" class =\"form__input mb\" type=\"date\" placeholder=\"start dates\" required name=\"startDates\"/>";
+    e.preventDefault();
+    console.log(e.target.parentElement);
+    e.target.insertAdjacentHTML('afterbegin', feild);
   });
 } // DELEGATION
 
@@ -9501,7 +9512,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64597" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62492" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
