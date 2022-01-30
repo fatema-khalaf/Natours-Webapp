@@ -14,6 +14,8 @@ const userPasswordForm = document.querySelector('.form-user-password');
 const logOutBtn = document.querySelectorAll('.nav__el--logout');
 const bookBtn = document.getElementById('book-tour');
 const addDate = document.getElementById('addDate');
+const addTourForm = document.querySelector('.form-add-tour');
+
 const startDates = document.getElementById('startDates');
 //const back = document.getElementById('back');
 const menuIcon = document.querySelector('.menu-icon');
@@ -39,11 +41,13 @@ if (menuIcon) {
   });
 }
 if (addDate) {
+  let num = 0;
+  const inputs = document.querySelectorAll('.hide');
   addDate.addEventListener('click', (e) => {
-    const feild = `<input id="startDates" class ="form__input mb" type="date" placeholder="start dates" required name="startDates"/>`;
     e.preventDefault();
-    console.log(e.target.parentElement);
-    e.target.insertAdjacentHTML('afterbegin', feild);
+    inputs[num].style.display = 'unset';
+    num++;
+    if (num === 3) e.target.style.pointerEvents = 'none';
   });
 }
 // DELEGATION
@@ -114,3 +118,54 @@ if (bookBtn)
 
 const alertMessage = document.querySelector('body').dataset.alert;
 if (alertMessage) showAlert('success', alertMessage);
+
+if (addTourForm) {
+  addTourForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form2 = new FormData(); // this form data to cary the file otherwise the file will not be sent
+    form2.append('name', document.getElementById('name').value);
+    form2.append('duration', document.getElementById('duration').value);
+    form2.append('difficulty', document.getElementById('difficulty').value);
+    form2.append('maxGroupSize', document.getElementById('maxGroupSize').value);
+    form2.append('price', document.getElementById('price').value);
+    form2.append('summary', document.getElementById('summary').value);
+    form2.append('description', document.getElementById('description').value);
+    const dates = document.querySelectorAll('.startDate');
+    dates.forEach((date) => {
+      if (date.value) form2.append('startDates', date.value);
+    });
+    form2.append(
+      'startLocation[description]',
+      document.getElementById('startLocationDescription').value
+    );
+    form2.append(
+      'startLocation[coordinates]',
+      document
+        .getElementById('startLocationCoordinates')
+        .value.split(',')[0]
+        .trim()
+    );
+    form2.append(
+      'startLocation[coordinates]',
+      document
+        .getElementById('startLocationCoordinates')
+        .value.split(',')[1]
+        .trim()
+    );
+    form2.append(
+      'startLocation[adress]',
+      document.getElementById('startLocationAddress').value
+    );
+    const guides = document.querySelectorAll('.guides');
+    guides.forEach((guide) => {
+      if (guide.checked === true) form2.append('guides', guide.value);
+    });
+    form2.append('imageCover', document.getElementById('imageCover').files[0]);
+    const images = document.getElementById('image1').files;
+    const indexes = [0, 1, 2];
+    indexes.forEach((index) => {
+      form2.append('images', images[index]);
+    });
+    addTour(form2);
+  });
+}

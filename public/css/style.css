@@ -1768,3 +1768,6 @@ body {
   display: inline-block;
   margin-left: 1rem;
 }
+.hide {
+  display: none;
+}
