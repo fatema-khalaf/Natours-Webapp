@@ -65,7 +65,11 @@ exports.getTour = factory.getOne(Tour, { path: 'reviews' });
 // exports.createTour = factory.createOne(Tour);
 
 exports.createTour = catchAsync(async (req, res, next) => {
-  console.log(req.body);
+  let result = req.body;
+  result.startLocation.description = req.body.satartLocation[0];
+  result.startLocation.coordinates = req.body.satartLocation[1];
+  result.startLocation.coordinates = req.body.satartLocation[2];
+  result.startLocation.address = req.body.satartLocation[3];
   const newTour = await Tour.create(req.body);
   res.status(201).json({
     staus: 'success',

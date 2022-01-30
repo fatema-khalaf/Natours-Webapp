@@ -60,6 +60,9 @@ const filterObject = (obj, ...allowedFields) => {
 //   });
 // });
 
+exports.test = catchAsync(async (req, res, next) => {
+  console.log(req.body);
+});
 exports.updateMe = catchAsync(async (req, res, next) => {
   console.log(req.body);
   // 1) Create error if user POSTs password data

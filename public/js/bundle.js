@@ -8928,7 +8928,8 @@ var updateSettings = /*#__PURE__*/function () {
             console.log(data);
             url = type === 'password' ? // ? '/api/v1/users/updateMyPassword'
             // : '/api/v1/users/updateMe';
-            'http://127.0.0.1:3000/api/v1/users/updateMyPassword' : 'http://127.0.0.1:3000/api/v1/users/updateMe';
+            'http://127.0.0.1:3000/api/v1/users/updateMyPassword' : 'http://127.0.0.1:3000/api/v1/users/updateMe'; // 'http://127.0.0.1:3000/api/v1/tours';
+
             _context.next = 5;
             return (0, _axios.default)({
               method: 'PATCH',
@@ -9496,24 +9497,44 @@ if (userDataForm) {
 if (addTourForm) {
   addTourForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var form = new FormData(); // this form data to cary the file otherwise the file will not be sent
+    var form2 = new FormData(); // this form data to cary the file otherwise the file will not be sent
 
-    form.append('name', document.getElementById('name').value);
-    form.append('duration', document.getElementById('duration').value);
-    form.append('difficulty', document.getElementById('difficulty').value);
-    form.append('maxGroupSize', document.getElementById('maxGroupSize').value);
-    form.append('price', document.getElementById('price').value);
-    form.append('summary', document.getElementById('summary').value);
-    form.append('description', document.getElementById('description').value);
-    form.append('startDates', document.getElementById('startDates').value);
-    form.append('startLocationDescription', document.getElementById('startLocationDescription').value);
-    form.append('startLocationCoordinates', document.getElementById('startLocationCoordinates').value);
-    form.append('startLocationAddress', document.getElementById('startLocationAddress').value);
-    form.append('guides', document.getElementById('guides').value);
-    form.append('imageCover', document.getElementById('imageCover').files[0]);
-    console.log(form.entries());
+    form2.append('name', document.getElementById('name').value);
+    form2.append('duration', document.getElementById('duration').value);
+    form2.append('difficulty', document.getElementById('difficulty').value);
+    form2.append('maxGroupSize', document.getElementById('maxGroupSize').value);
+    form2.append('price', document.getElementById('price').value);
+    form2.append('summary', document.getElementById('summary').value);
+    form2.append('description', document.getElementById('description').value);
+    form2.append('startDates', document.getElementById('startDates').value);
+    var satartLocation = {
+      description: document.getElementById('startLocationDescription').value,
+      coordinates: [document.getElementById('startLocationCoordinates').value.split(',')[0], document.getElementById('startLocationCoordinates').value.split(',')[0]],
+      address: document.getElementById('startLocationDescription').value
+    }; // form2.append(
+    //   'startLocationDescription',
+    //   document.getElementById('startLocationDescription').value
+    // );
+    // form2.append(
+    //   'startLocationCoordinates',
+    //   document.getElementById('startLocationCoordinates').value
+    // );
+    // form2.append(
+    //   'startLocationAddress',
+    //   document.getElementById('startLocationAddress').value
+    // );
+
+    form2.append('satartLocation', document.getElementById('startLocationDescription').value);
+    form2.append('satartLocation', document.getElementById('startLocationCoordinates').value.split(',')[0]);
+    form2.append('satartLocation', document.getElementById('startLocationCoordinates').value.split(',')[1]);
+    form2.append('satartLocation', document.getElementById('startLocationAddress').value);
+    form2.append('guides', document.getElementById('guides').value);
+    form2.append('imageCover', document.getElementById('imageCover').files[0]);
+    form2.append('images', document.getElementById('image1').files[0]);
+    form2.append('images', document.getElementById('image2').files[0]);
     console.log(document.getElementById('imageCover').files[0]);
-    (0, _addTour.addTour)(form);
+    (0, _addTour.addTour)(form2);
+    var name = document.getElementById('name').value;
   });
 }
 
@@ -9601,7 +9622,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57084" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56581" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -17,6 +17,7 @@ const viewRouter = require('./routes/viewRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 const app = express();
 
 // For heroku configration
@@ -60,9 +61,14 @@ app.use(
     limit: '10kb', // don't accept data more than 10kb in body
   })
 );
-app.use(express.urlencoded({ extended: true, limit: '10kb' })); // this middleware only for "updateUserData" function in viewsController
+// app.use(express.urlencoded({ extended: true, limit: '10kb' })); // this middleware only for "updateUserData" function in viewsController
 app.use(cookieParser());
-
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: false
+// }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize()); // prevent mongo query from be inserted to the DB
 

@@ -74,32 +74,59 @@ if (userDataForm) {
 if (addTourForm) {
   addTourForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const form = new FormData(); // this form data to cary the file otherwise the file will not be sent
-    form.append('name', document.getElementById('name').value);
-    form.append('duration', document.getElementById('duration').value);
-    form.append('difficulty', document.getElementById('difficulty').value);
-    form.append('maxGroupSize', document.getElementById('maxGroupSize').value);
-    form.append('price', document.getElementById('price').value);
-    form.append('summary', document.getElementById('summary').value);
-    form.append('description', document.getElementById('description').value);
-    form.append('startDates', document.getElementById('startDates').value);
-    form.append(
-      'startLocationDescription',
+    const form2 = new FormData(); // this form data to cary the file otherwise the file will not be sent
+    form2.append('name', document.getElementById('name').value);
+    form2.append('duration', document.getElementById('duration').value);
+    form2.append('difficulty', document.getElementById('difficulty').value);
+    form2.append('maxGroupSize', document.getElementById('maxGroupSize').value);
+    form2.append('price', document.getElementById('price').value);
+    form2.append('summary', document.getElementById('summary').value);
+    form2.append('description', document.getElementById('description').value);
+    form2.append('startDates', document.getElementById('startDates').value);
+    const satartLocation = {
+      description: document.getElementById('startLocationDescription').value,
+      coordinates: [
+        document.getElementById('startLocationCoordinates').value.split(',')[0],
+        document.getElementById('startLocationCoordinates').value.split(',')[0],
+      ],
+      address: document.getElementById('startLocationDescription').value,
+    };
+    // form2.append(
+    //   'startLocationDescription',
+    //   document.getElementById('startLocationDescription').value
+    // );
+    // form2.append(
+    //   'startLocationCoordinates',
+    //   document.getElementById('startLocationCoordinates').value
+    // );
+    // form2.append(
+    //   'startLocationAddress',
+    //   document.getElementById('startLocationAddress').value
+    // );
+    form2.append(
+      'satartLocation',
       document.getElementById('startLocationDescription').value
     );
-    form.append(
-      'startLocationCoordinates',
-      document.getElementById('startLocationCoordinates').value
+    form2.append(
+      'satartLocation',
+      document.getElementById('startLocationCoordinates').value.split(',')[0]
     );
-    form.append(
-      'startLocationAddress',
+    form2.append(
+      'satartLocation',
+      document.getElementById('startLocationCoordinates').value.split(',')[1]
+    );
+    form2.append(
+      'satartLocation',
       document.getElementById('startLocationAddress').value
     );
-    form.append('guides', document.getElementById('guides').value);
-    form.append('imageCover', document.getElementById('imageCover').files[0]);
-    console.log(form.entries());
+    form2.append('guides', document.getElementById('guides').value);
+    form2.append('imageCover', document.getElementById('imageCover').files[0]);
+    form2.append('images', document.getElementById('image1').files[0]);
+    form2.append('images', document.getElementById('image2').files[0]);
     console.log(document.getElementById('imageCover').files[0]);
-    addTour(form);
+    addTour(form2);
+
+    const name = document.getElementById('name').value;
   });
 }
 
