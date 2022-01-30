@@ -62,7 +62,19 @@ exports.aliasTopTours = (req, res, next) => {
 
 exports.getAllTours = factory.getAll(Tour);
 exports.getTour = factory.getOne(Tour, { path: 'reviews' });
-exports.createTour = factory.createOne(Tour);
+// exports.createTour = factory.createOne(Tour);
+
+exports.createTour = catchAsync(async (req, res, next) => {
+  console.log(req.body);
+  const newTour = await Tour.create(req.body);
+  res.status(201).json({
+    staus: 'success',
+    data: {
+      tour: newTour,
+    },
+  });
+});
+
 exports.deleteTour = factory.deleteOne(Tour);
 exports.updateTour = factory.updateOne(Tour);
 

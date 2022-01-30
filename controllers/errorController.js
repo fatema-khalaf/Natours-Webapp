@@ -52,6 +52,7 @@ const sendErrorProd = (err, req, res) => {
       });
     }
     // Programming or unknown error: don't leak error details
+    console.log();
     // 1) Log error
     console.log('ERROR 💥', err);
     // 2) Send generic message
@@ -62,6 +63,8 @@ const sendErrorProd = (err, req, res) => {
   }
   // RENDERED WEBSITE
   if (err.isOperational) {
+    console.log('ERROR 💥', err);
+
     return res.status(err.statusCode).render('error', {
       title: 'Something went wrong!',
       msg: err.message,

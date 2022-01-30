@@ -1,6 +1,7 @@
 import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
+import { addTour } from './addTour';
 import { displayMap } from './mapbox';
 import { bookTour } from './stripe';
 import { showAlert } from './alert';
@@ -8,12 +9,13 @@ import { showAlert } from './alert';
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
 const userDataForm = document.querySelector('.form-user-data');
+
+const addTourForm = document.querySelector('.form-add-tour');
+
 const userPasswordForm = document.querySelector('.form-user-password');
 const logOutBtn = document.querySelectorAll('.nav__el--logout');
 const bookBtn = document.getElementById('book-tour');
 const addDate = document.getElementById('addDate');
-const startDates = document.getElementById('startDates');
-//const back = document.getElementById('back');
 const menuIcon = document.querySelector('.menu-icon');
 const adminNav = document.querySelector('.admin-nav');
 const sideNav = document.querySelectorAll('.side-nav');
@@ -25,10 +27,6 @@ if (menuIcon) {
     if (adminNav) adminNav.classList.toggle('display');
     sideNav.forEach((el) => el.classList.toggle('display'));
     userViewMenu.classList.toggle('flex-width');
-    // let svg = document.createElement('svg');
-    // svg.classList.add('menu-icon');
-    // svg.innerHTML = '<use xlink:href="img/icons.svg#icon-star"/><use>';
-    // userViewMenu.replaceChild(svg, userViewMenu.childNodes[0]);
   });
   userViewContent.addEventListener('click', () => {
     if (adminNav) adminNav.classList.remove('display');
@@ -72,6 +70,39 @@ if (userDataForm) {
     updateSettings(form, 'data');
   });
 }
+
+if (addTourForm) {
+  addTourForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = new FormData(); // this form data to cary the file otherwise the file will not be sent
+    form.append('name', document.getElementById('name').value);
+    form.append('duration', document.getElementById('duration').value);
+    form.append('difficulty', document.getElementById('difficulty').value);
+    form.append('maxGroupSize', document.getElementById('maxGroupSize').value);
+    form.append('price', document.getElementById('price').value);
+    form.append('summary', document.getElementById('summary').value);
+    form.append('description', document.getElementById('description').value);
+    form.append('startDates', document.getElementById('startDates').value);
+    form.append(
+      'startLocationDescription',
+      document.getElementById('startLocationDescription').value
+    );
+    form.append(
+      'startLocationCoordinates',
+      document.getElementById('startLocationCoordinates').value
+    );
+    form.append(
+      'startLocationAddress',
+      document.getElementById('startLocationAddress').value
+    );
+    form.append('guides', document.getElementById('guides').value);
+    form.append('imageCover', document.getElementById('imageCover').files[0]);
+    console.log(form.entries());
+    console.log(document.getElementById('imageCover').files[0]);
+    addTour(form);
+  });
+}
+
 if (userPasswordForm) {
   userPasswordForm.addEventListener('submit', async (e) => {
     e.preventDefault();
