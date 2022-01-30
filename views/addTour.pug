@@ -36,7 +36,10 @@ block dash
         
         .form__group.ma-bt-md
           label.form__label(for='startDates') Start Dates
-          input#startDates.mb.form__input(type='date', placeholder='start dates', required, name='startDates')
+          input#startDates.mb.form__input(class="startDate" type='date', placeholder='start dates', required, name='startDates')
+          input#startDates.mb.form__input(class="startDate hide" type='date', placeholder='start dates', name='startDates')
+          input#startDates.mb.form__input(class="startDate hide" type='date', placeholder='start dates', name='startDates')
+          input#startDates.mb.form__input(class="startDate hide" type='date', placeholder='start dates', name='startDates')
           a#addDate.form__link(href='#') add another date
         .form__group.ma-bt-md
           label.form__label(for='startLocationDescription') Start Location Description
@@ -53,8 +56,8 @@ block dash
           .chek__group
             each guide in guides
               .r
-                input#guides(type='checkbox', name=`${guide.id}`, value=`${guide.id}`)
-                label.form__label(for=`${guide.id}`) #{guide.name}
+                input#guides(class="guides" type='checkbox', name=`${guide.id}`, value=`${guide.id}`)
+                label.form__label(for='') #{guide.name}
           //- select#difficulty.form__input(name="difficulty", required)
           //-   option(value="easy") easy
           //-   option(value="medium") medium
@@ -66,12 +69,9 @@ block dash
 
         .form__group.form__photo-upload
           img.form__user-photo(src='/img/users/default.jpg', alt='User photo')
-          input.form__upload(type='file', accept='image/*', id='image1', name='image1')
+          input.form__upload(type='file', accept='image/*', id='image1', name='image1' multiple)
           label(for='image1') Choose Image 
-        .form__group.form__photo-upload
-          img.form__user-photo(src='/img/users/default.jpg', alt='User photo')
-          input.form__upload(type='file', accept='image/*', id='image2', name='image2')
-          label(for='image2') Choose Image 
+        
         .form__group.right
           button.btn.btn--small.btn--green Save Tour
     

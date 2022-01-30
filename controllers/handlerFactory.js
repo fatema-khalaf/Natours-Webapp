@@ -38,7 +38,7 @@ exports.createOne = (Model) =>
     console.log(req.body);
     const doc = await Model.create(req.body);
     res.status(201).json({
-      staus: 'success',
+      status: 'success',
       data: {
         tour: doc,
       },

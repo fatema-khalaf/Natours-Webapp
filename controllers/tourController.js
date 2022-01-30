@@ -62,22 +62,23 @@ exports.aliasTopTours = (req, res, next) => {
 
 exports.getAllTours = factory.getAll(Tour);
 exports.getTour = factory.getOne(Tour, { path: 'reviews' });
-// exports.createTour = factory.createOne(Tour);
+exports.createTour = factory.createOne(Tour);
 
-exports.createTour = catchAsync(async (req, res, next) => {
-  let result = req.body;
-  result.startLocation.description = req.body.satartLocation[0];
-  result.startLocation.coordinates = req.body.satartLocation[1];
-  result.startLocation.coordinates = req.body.satartLocation[2];
-  result.startLocation.address = req.body.satartLocation[3];
-  const newTour = await Tour.create(req.body);
-  res.status(201).json({
-    staus: 'success',
-    data: {
-      tour: newTour,
-    },
-  });
-});
+// exports.createTour = catchAsync(async (req, res, next) => {
+//   // let result = req.body;
+//   // result.startLocation.description = req.body.satartLocation[0];
+//   // result.startLocation.coordinates = req.body.satartLocation[1];
+//   // result.startLocation.coordinates = req.body.satartLocation[2];
+//   // result.startLocation.address = req.body.satartLocation[3];
+//   console.log(req.body);
+//   const newTour = await Tour.create(req.body);
+//   res.status(201).json({
+//     staus: 'success',
+//     data: {
+//       tour: newTour,
+//     },
+//   });
+// });
 
 exports.deleteTour = factory.deleteOne(Tour);
 exports.updateTour = factory.updateOne(Tour);

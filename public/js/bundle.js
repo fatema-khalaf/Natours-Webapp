@@ -9010,6 +9010,9 @@ var addTour = /*#__PURE__*/function () {
             // IF logged in successfuly redirect to the main page after 1500 ms
             if (res.data.status === 'success') {
               (0, _alert.showAlert)('success', 'Tour added successfully!');
+              window.setTimeout(function () {
+                location.assign('/add-tour');
+              }, 1000);
             }
 
             _context.next = 12;
@@ -9459,11 +9462,13 @@ if (menuIcon) {
 }
 
 if (addDate) {
+  var num = 0;
+  var inputs = document.querySelectorAll('.hide');
   addDate.addEventListener('click', function (e) {
-    var feild = "<input id=\"startDates\" class =\"form__input mb\" type=\"date\" placeholder=\"start dates\" required name=\"startDates\"/>";
     e.preventDefault();
-    console.log(e.target.parentElement);
-    e.target.insertAdjacentHTML('afterbegin', feild);
+    inputs[num].style.display = 'unset';
+    num++;
+    if (num === 3) e.target.style.pointerEvents = 'none';
   });
 } // DELEGATION
 
@@ -9506,35 +9511,25 @@ if (addTourForm) {
     form2.append('price', document.getElementById('price').value);
     form2.append('summary', document.getElementById('summary').value);
     form2.append('description', document.getElementById('description').value);
-    form2.append('startDates', document.getElementById('startDates').value);
-    var satartLocation = {
-      description: document.getElementById('startLocationDescription').value,
-      coordinates: [document.getElementById('startLocationCoordinates').value.split(',')[0], document.getElementById('startLocationCoordinates').value.split(',')[0]],
-      address: document.getElementById('startLocationDescription').value
-    }; // form2.append(
-    //   'startLocationDescription',
-    //   document.getElementById('startLocationDescription').value
-    // );
-    // form2.append(
-    //   'startLocationCoordinates',
-    //   document.getElementById('startLocationCoordinates').value
-    // );
-    // form2.append(
-    //   'startLocationAddress',
-    //   document.getElementById('startLocationAddress').value
-    // );
-
-    form2.append('satartLocation', document.getElementById('startLocationDescription').value);
-    form2.append('satartLocation', document.getElementById('startLocationCoordinates').value.split(',')[0]);
-    form2.append('satartLocation', document.getElementById('startLocationCoordinates').value.split(',')[1]);
-    form2.append('satartLocation', document.getElementById('startLocationAddress').value);
-    form2.append('guides', document.getElementById('guides').value);
+    var dates = document.querySelectorAll('.startDate');
+    dates.forEach(function (date) {
+      if (date.value) form2.append('startDates', date.value);
+    });
+    form2.append('startLocation[description]', document.getElementById('startLocationDescription').value);
+    form2.append('startLocation[coordinates]', document.getElementById('startLocationCoordinates').value.split(',')[0].trim());
+    form2.append('startLocation[coordinates]', document.getElementById('startLocationCoordinates').value.split(',')[1].trim());
+    form2.append('startLocation[adress]', document.getElementById('startLocationAddress').value);
+    var guides = document.querySelectorAll('.guides');
+    guides.forEach(function (guide) {
+      if (guide.checked === true) form2.append('guides', guide.value);
+    });
     form2.append('imageCover', document.getElementById('imageCover').files[0]);
-    form2.append('images', document.getElementById('image1').files[0]);
-    form2.append('images', document.getElementById('image2').files[0]);
-    console.log(document.getElementById('imageCover').files[0]);
+    var images = document.getElementById('image1').files;
+    var indexes = [0, 1, 2];
+    indexes.forEach(function (index) {
+      form2.append('images', images[index]);
+    });
     (0, _addTour.addTour)(form2);
-    var name = document.getElementById('name').value;
   });
 }
 
@@ -9622,7 +9617,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56581" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49441" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

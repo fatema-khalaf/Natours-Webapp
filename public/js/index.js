@@ -36,11 +36,13 @@ if (menuIcon) {
 }
 
 if (addDate) {
+  let num = 0;
+  const inputs = document.querySelectorAll('.hide');
   addDate.addEventListener('click', (e) => {
-    const feild = `<input id="startDates" class ="form__input mb" type="date" placeholder="start dates" required name="startDates"/>`;
     e.preventDefault();
-    console.log(e.target.parentElement);
-    e.target.insertAdjacentHTML('afterbegin', feild);
+    inputs[num].style.display = 'unset';
+    num++;
+    if (num === 3) e.target.style.pointerEvents = 'none';
   });
 }
 
@@ -82,51 +84,44 @@ if (addTourForm) {
     form2.append('price', document.getElementById('price').value);
     form2.append('summary', document.getElementById('summary').value);
     form2.append('description', document.getElementById('description').value);
-    form2.append('startDates', document.getElementById('startDates').value);
-    const satartLocation = {
-      description: document.getElementById('startLocationDescription').value,
-      coordinates: [
-        document.getElementById('startLocationCoordinates').value.split(',')[0],
-        document.getElementById('startLocationCoordinates').value.split(',')[0],
-      ],
-      address: document.getElementById('startLocationDescription').value,
-    };
-    // form2.append(
-    //   'startLocationDescription',
-    //   document.getElementById('startLocationDescription').value
-    // );
-    // form2.append(
-    //   'startLocationCoordinates',
-    //   document.getElementById('startLocationCoordinates').value
-    // );
-    // form2.append(
-    //   'startLocationAddress',
-    //   document.getElementById('startLocationAddress').value
-    // );
+    const dates = document.querySelectorAll('.startDate');
+    dates.forEach((date) => {
+      if (date.value) form2.append('startDates', date.value);
+    });
     form2.append(
-      'satartLocation',
+      'startLocation[description]',
       document.getElementById('startLocationDescription').value
     );
     form2.append(
-      'satartLocation',
-      document.getElementById('startLocationCoordinates').value.split(',')[0]
+      'startLocation[coordinates]',
+      document
+        .getElementById('startLocationCoordinates')
+        .value.split(',')[0]
+        .trim()
     );
     form2.append(
-      'satartLocation',
-      document.getElementById('startLocationCoordinates').value.split(',')[1]
+      'startLocation[coordinates]',
+      document
+        .getElementById('startLocationCoordinates')
+        .value.split(',')[1]
+        .trim()
     );
     form2.append(
-      'satartLocation',
+      'startLocation[adress]',
       document.getElementById('startLocationAddress').value
     );
-    form2.append('guides', document.getElementById('guides').value);
-    form2.append('imageCover', document.getElementById('imageCover').files[0]);
-    form2.append('images', document.getElementById('image1').files[0]);
-    form2.append('images', document.getElementById('image2').files[0]);
-    console.log(document.getElementById('imageCover').files[0]);
-    addTour(form2);
+    const guides = document.querySelectorAll('.guides');
+    guides.forEach((guide) => {
+      if (guide.checked === true) form2.append('guides', guide.value);
+    });
 
-    const name = document.getElementById('name').value;
+    form2.append('imageCover', document.getElementById('imageCover').files[0]);
+    const images = document.getElementById('image1').files;
+    const indexes = [0, 1, 2];
+    indexes.forEach((index) => {
+      form2.append('images', images[index]);
+    });
+    addTour(form2);
   });
 }
 
