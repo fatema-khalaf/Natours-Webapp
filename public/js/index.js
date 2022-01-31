@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { addTour } from './addTour';
+import { deleteTour } from './deleteTour';
 import { displayMap } from './mapbox';
 import { bookTour } from './stripe';
 import { showAlert } from './alert';
@@ -16,7 +17,7 @@ const logOutBtn = document.querySelectorAll('.nav__el--logout');
 const bookBtn = document.getElementById('book-tour');
 const addDate = document.getElementById('addDate');
 const addTourForm = document.querySelector('.form-add-tour');
-
+const dTour = document.querySelectorAll('.deleteTour');
 const startDates = document.getElementById('startDates');
 //const back = document.getElementById('back');
 const menuIcon = document.querySelector('.menu-icon');
@@ -170,3 +171,14 @@ if (addTourForm) {
     addTour(form2);
   });
 }
+
+if (dTour)
+  dTour.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const tourId = el.dataset.tourId;
+      e.target.style.pointerEvents = 'none';
+      console.log(el);
+      console.log(tourId);
+      deleteTour(tourId);
+    });
+  });
