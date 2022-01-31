@@ -14,9 +14,9 @@ export const addTour = async (data) => {
     // IF logged in successfuly redirect to the main page after 1500 ms
     if (res.data.status === 'success') {
       showAlert('success', 'Tour added successfully!');
-      window.setTimeout(() => {
-        location.assign('/add-tour');
-      }, 1000);
+      // window.setTimeout(() => {
+      //   location.assign('/add-tour');
+      // }, 1000);
     }
   } catch (err) {
     showAlert('error', err.response.data.message);

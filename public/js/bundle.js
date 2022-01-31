@@ -9009,10 +9009,9 @@ var addTour = /*#__PURE__*/function () {
 
             // IF logged in successfuly redirect to the main page after 1500 ms
             if (res.data.status === 'success') {
-              (0, _alert.showAlert)('success', 'Tour added successfully!');
-              window.setTimeout(function () {
-                location.assign('/add-tour');
-              }, 1000);
+              (0, _alert.showAlert)('success', 'Tour added successfully!'); // window.setTimeout(() => {
+              //   location.assign('/add-tour');
+              // }, 1000);
             }
 
             _context.next = 12;
@@ -9502,6 +9501,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 // DOM ELEMENTS
 var mapBox = document.getElementById('map');
+var addLocatios = document.getElementById('addLocatios');
 var loginForm = document.querySelector('.form--login');
 var userDataForm = document.querySelector('.form-user-data');
 var addTourForm = document.querySelector('.form-add-tour');
@@ -9515,6 +9515,12 @@ var adminNav = document.querySelector('.admin-nav');
 var sideNav = document.querySelectorAll('.side-nav');
 var userViewMenu = document.querySelector('.user-view__menu');
 var userViewContent = document.querySelector('.user-view__content');
+if (addLocatios) addLocatios.addEventListener('click', function (e) {
+  e.preventDefault();
+  var locations = document.querySelector('.locations');
+  var clone = locations.cloneNode(true);
+  locations.after(clone);
+});
 
 if (menuIcon) {
   menuIcon.addEventListener('click', function (e) {
@@ -9595,6 +9601,35 @@ if (addTourForm) {
     guides.forEach(function (guide) {
       if (guide.checked === true) form2.append('guides', guide.value);
     });
+    var locationsdescriptions = document.querySelectorAll('.locationsdescription');
+    locationsdescriptions.forEach(function (el, i) {
+      console.log(el, i);
+      form2.append("locations[".concat(i, "][description]"), el.value);
+    });
+    var locationscoordinates = document.querySelectorAll('.locationscoordinates');
+    locationscoordinates.forEach(function (el, i) {
+      console.log(el.value, i);
+      console.log(el.value.split(',')[0].trim(), i);
+      form2.append("locations[".concat(i, "][coordinates]"), el.value.split(',')[0].trim());
+      form2.append("locations[".concat(i, "][coordinates]"), el.value.split(',')[1].trim());
+    });
+    var locationsdays = document.querySelectorAll('.locationsday');
+    locationsdays.forEach(function (el, i) {
+      console.log(el, i);
+      form2.append("locations[".concat(i, "][day]"), el.value);
+    }); // form2.append(
+    //   'locations[0][coordinate]',
+    //   document.getElementById('locationscoordinates').value.split(',')[0].trim()
+    // );
+    // form2.append(
+    //   'locations[0][coordinate]',
+    //   document.getElementById('locationscoordinates').value.split(',')[1].trim()
+    // );
+    // form2.append(
+    //   'locations[0][day]',
+    //   document.getElementById('locationsday').value
+    // );
+
     form2.append('imageCover', document.getElementById('imageCover').files[0]);
     var images = document.getElementById('image1').files;
     var indexes = [0, 1, 2];
@@ -9602,6 +9637,7 @@ if (addTourForm) {
       form2.append('images', images[index]);
     });
     (0, _addTour.addTour)(form2);
+    console.log(form2.entries());
   });
 }
 
@@ -9698,7 +9734,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63794" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55212" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

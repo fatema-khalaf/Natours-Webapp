@@ -8,9 +8,9 @@ import { bookTour } from './stripe';
 import { showAlert } from './alert';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
+const addLocatios = document.getElementById('addLocatios');
 const loginForm = document.querySelector('.form--login');
 const userDataForm = document.querySelector('.form-user-data');
-
 const addTourForm = document.querySelector('.form-add-tour');
 const dTour = document.querySelectorAll('.deleteTour');
 
@@ -23,6 +23,15 @@ const adminNav = document.querySelector('.admin-nav');
 const sideNav = document.querySelectorAll('.side-nav');
 const userViewMenu = document.querySelector('.user-view__menu');
 const userViewContent = document.querySelector('.user-view__content');
+
+if (addLocatios)
+  addLocatios.addEventListener('click', (e) => {
+    e.preventDefault();
+    const locations = document.querySelector('.locations');
+    const clone = locations.cloneNode(true);
+
+    locations.after(clone);
+  });
 
 if (menuIcon) {
   menuIcon.addEventListener('click', (e) => {
@@ -117,6 +126,49 @@ if (addTourForm) {
       if (guide.checked === true) form2.append('guides', guide.value);
     });
 
+    const locationsdescriptions = document.querySelectorAll(
+      '.locationsdescription'
+    );
+    locationsdescriptions.forEach((el, i) => {
+      console.log(el, i);
+      form2.append(`locations[${i}][description]`, el.value);
+    });
+
+    const locationscoordinates = document.querySelectorAll(
+      '.locationscoordinates'
+    );
+    locationscoordinates.forEach((el, i) => {
+      console.log(el.value, i);
+      console.log(el.value.split(',')[0].trim(), i);
+      form2.append(
+        `locations[${i}][coordinates]`,
+        el.value.split(',')[0].trim()
+      );
+      form2.append(
+        `locations[${i}][coordinates]`,
+        el.value.split(',')[1].trim()
+      );
+    });
+
+    const locationsdays = document.querySelectorAll('.locationsday');
+    locationsdays.forEach((el, i) => {
+      console.log(el, i);
+      form2.append(`locations[${i}][day]`, el.value);
+    });
+
+    // form2.append(
+    //   'locations[0][coordinate]',
+    //   document.getElementById('locationscoordinates').value.split(',')[0].trim()
+    // );
+    // form2.append(
+    //   'locations[0][coordinate]',
+    //   document.getElementById('locationscoordinates').value.split(',')[1].trim()
+    // );
+    // form2.append(
+    //   'locations[0][day]',
+    //   document.getElementById('locationsday').value
+    // );
+
     form2.append('imageCover', document.getElementById('imageCover').files[0]);
     const images = document.getElementById('image1').files;
     const indexes = [0, 1, 2];
@@ -124,6 +176,7 @@ if (addTourForm) {
       form2.append('images', images[index]);
     });
     addTour(form2);
+    console.log(form2.entries());
   });
 }
 

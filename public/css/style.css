@@ -88,6 +88,9 @@ body {
 .ma-bt-lg {
   margin-bottom: 3.5rem !important;
 }
+.ma-ri {
+  margin-right: 10% !important;
+}
 
 .right {
   text-align: right !important;
@@ -1790,4 +1793,12 @@ body {
 }
 .hide {
   display: none;
+}
+.guides,
+.pointer {
+  cursor: pointer;
+}
+.half-width {
+  width: 45%;
+  display: inline-block;
 }
