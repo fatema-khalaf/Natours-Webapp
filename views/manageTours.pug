@@ -23,7 +23,7 @@ block dash
             a(href=`/tour/edit/${tour.slug}`)
               svg.card__icon
                 use(xlink:href='img/icons.svg#icon-edit')
-            a(href=`/tour/delete/${tour.slug}`)
+            a.deleteTour(href='#' data-tour-id=`${tour.id}`)
               svg.card__icon.di
                 use(xlink:href='img/icons.svg#icon-delete')
     .tc 

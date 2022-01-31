@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { addTour } from './addTour';
+import { deleteTour } from './deleteTour';
 import { displayMap } from './mapbox';
 import { bookTour } from './stripe';
 import { showAlert } from './alert';
@@ -11,6 +12,7 @@ const loginForm = document.querySelector('.form--login');
 const userDataForm = document.querySelector('.form-user-data');
 
 const addTourForm = document.querySelector('.form-add-tour');
+const dTour = document.querySelectorAll('.deleteTour');
 
 const userPasswordForm = document.querySelector('.form-user-password');
 const logOutBtn = document.querySelectorAll('.nav__el--logout');
@@ -154,6 +156,17 @@ if (bookBtn)
     e.target.textContent = 'Processing...'; // e.target => the cliked element (bookBtn)
     const tourId = e.target.dataset.tourId;
     bookTour(tourId);
+  });
+
+if (dTour)
+  dTour.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const tourId = el.dataset.tourId;
+      e.target.style.pointerEvents = 'none';
+      console.log(el);
+      console.log(tourId);
+      deleteTour(tourId);
+    });
   });
 
 const alertMessage = document.querySelector('body').dataset.alert;
