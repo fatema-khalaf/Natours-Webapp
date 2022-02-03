@@ -8,10 +8,11 @@ block dash
     .user-view__form-container
       h2.heading-secondary.ma-bt-md Edit Tour
       
-      form.form.form-add-tour
+      form.form.form-edit-tour
         .form__group
           label.form__label(for='name') Tour Name
           input#name.form__input(type='text', placeholder=`${tour.name}`, value=`${tour.name}`, required, name='name')
+          input#edit_id.form__input(type='hidden', value=`${tour.id}`)
         .form__group.ma-bt-md
           label.form__label(for='duration') Duration
           input#duration.form__input(type='text', placeholder='Duration', value=`${tour.duration}`, required, name='duration')
@@ -51,7 +52,7 @@ block dash
           input#startLocationDescription.form__input(type='text', required, value=`${tour.startLocation.description}`, name='startLocationDescription')
         .form__group.ma-bt-md
           label.form__label(for='startLocationCoordinates') Start Location coordinates
-          input#startLocationCoordinates.form__input(type='text',value=`${tour.startLocation.coordinates}`, required, name='startLocationCoordinates')
+          input#startLocationCoordinates.form__input(type='text',value=`${tour.startLocation.coordinates}`, name='startLocationCoordinates')
         .form__group.ma-bt-md
           label.form__label(for='startLocationAddress') Start Location address
           input#startLocationAddress.form__input(type='text',value=`${tour.startLocation.address}`, required, name='startLocationAddress')
@@ -65,7 +66,7 @@ block dash
                 input#locationsdescription.form__input( class="locationsdescription" type='text',value=`${location.description}`,  required, name='locationsdescription')
               .form__group.ma-bt-md.half-width.ma-ri
                 label.form__label(for='locationscoordinates') coordinates
-                input#locationscoordinates.form__input( class="locationscoordinates" type='text', value=`${location.coordinates}`, required, name='locationscoordinates')
+                input#locationscoordinates.form__input( class="locationscoordinates" type='text', value=`${location.coordinates}`, name='locationscoordinates')
               .form__group.ma-bt-md.half-width
                 label.form__label(for='locationsday') day
                 input#locationsday.form__input( class="locationsday" type='number',value=`${location.day}`,, required, name='locationsday')

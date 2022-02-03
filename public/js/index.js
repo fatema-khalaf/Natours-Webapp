@@ -2,6 +2,7 @@ import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { addTour } from './addTour';
+import { editTour } from './updateTour';
 import { deleteTour } from './deleteTour';
 import { displayMap } from './mapbox';
 import { bookTour } from './stripe';
@@ -13,7 +14,7 @@ const loginForm = document.querySelector('.form--login');
 const userDataForm = document.querySelector('.form-user-data');
 const addTourForm = document.querySelector('.form-add-tour');
 const dTour = document.querySelectorAll('.deleteTour');
-
+const editTourForm = document.querySelector('.form-edit-tour');
 const userPasswordForm = document.querySelector('.form-user-password');
 const logOutBtn = document.querySelectorAll('.nav__el--logout');
 const bookBtn = document.getElementById('book-tour');
@@ -84,8 +85,8 @@ if (userDataForm) {
   });
 }
 
-if (addTourForm) {
-  addTourForm.addEventListener('submit', (e) => {
+const formHolder = function (form, method, id) {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const form2 = new FormData(); // this form data to cary the file otherwise the file will not be sent
     form2.append('name', document.getElementById('name').value);
@@ -99,6 +100,7 @@ if (addTourForm) {
     dates.forEach((date) => {
       if (date.value) form2.append('startDates', date.value);
     });
+    form2.append('startLocation[type]', 'Point');
     form2.append(
       'startLocation[description]',
       document.getElementById('startLocationDescription').value
@@ -112,13 +114,15 @@ if (addTourForm) {
     );
     form2.append(
       'startLocation[coordinates]',
-      document
-        .getElementById('startLocationCoordinates')
-        .value.split(',')[1]
-        .trim()
+      parseInt(
+        document
+          .getElementById('startLocationCoordinates')
+          .value.split(',')[1]
+          .trim()
+      )
     );
     form2.append(
-      'startLocation[adress]',
+      'startLocation[address]',
       document.getElementById('startLocationAddress').value
     );
     const guides = document.querySelectorAll('.guides');
@@ -156,28 +160,22 @@ if (addTourForm) {
       form2.append(`locations[${i}][day]`, el.value);
     });
 
-    // form2.append(
-    //   'locations[0][coordinate]',
-    //   document.getElementById('locationscoordinates').value.split(',')[0].trim()
-    // );
-    // form2.append(
-    //   'locations[0][coordinate]',
-    //   document.getElementById('locationscoordinates').value.split(',')[1].trim()
-    // );
-    // form2.append(
-    //   'locations[0][day]',
-    //   document.getElementById('locationsday').value
-    // );
-
     form2.append('imageCover', document.getElementById('imageCover').files[0]);
     const images = document.getElementById('image1').files;
     const indexes = [0, 1, 2];
     indexes.forEach((index) => {
       form2.append('images', images[index]);
     });
-    addTour(form2);
+    method(form2, id);
     console.log(form2.entries());
   });
+};
+if (addTourForm) {
+  formHolder(addTourForm, addTour);
+}
+if (editTourForm) {
+  const id = document.getElementById('edit_id').value;
+  formHolder(editTourForm, editTour, id);
 }
 
 if (userPasswordForm) {
