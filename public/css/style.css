@@ -1750,7 +1750,7 @@ body {
 }
 
 #customers tr:hover {
-  transform: scale(1.03);
+  /* transform: scale(1.03); */
   background-color: #7dd56f3b;
 }
 .di {

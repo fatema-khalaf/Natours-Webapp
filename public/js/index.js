@@ -30,7 +30,7 @@ if (addLocatios)
     const locations = document.querySelector('.locations');
     const clone = locations.cloneNode(true);
 
-    locations.after(clone);
+    locations.before(clone);
   });
 
 if (menuIcon) {
