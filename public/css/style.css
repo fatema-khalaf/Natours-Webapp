@@ -88,6 +88,9 @@ body {
 .ma-bt-lg {
   margin-bottom: 3.5rem !important;
 }
+.ma-ri {
+  margin-right: 10% !important;
+}
 
 .right {
   text-align: right !important;
@@ -1726,7 +1729,7 @@ body {
 }
 
 #customers tr:hover {
-  transform: scale(1.03);
+  /* transform: scale(1.03); */
   background-color: #7dd56f3b;
 }
 .di {
@@ -1770,4 +1773,12 @@ body {
 }
 .hide {
   display: none;
+}
+.guides,
+.pointer {
+  cursor: pointer;
+}
+.half-width {
+  width: 45%;
+  display: inline-block;
 }

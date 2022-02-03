@@ -47,18 +47,33 @@ block dash
           input#startLocationDescription.form__input(type='text', placeholder='Miami, USA', required, name='startLocationDescription')
         .form__group.ma-bt-md
           label.form__label(for='startLocationCoordinates') Start Location coordinates
-          input#startLocationCoordinates.form__input(type='text', placeholder='[-80.185942, 25.774772]', required, name='startLocationCoordinates')
+          input#startLocationCoordinates.form__input(type='text', placeholder='-80.185942, 25.774772', required, name='startLocationCoordinates')
         .form__group.ma-bt-md
           label.form__label(for='startLocationAddress') Start Location address
           input#startLocationAddress.form__input(type='text', placeholder='301 Biscayne Blvd, Miami, FL 33132, USA', required, name='startLocationAddress')
+       
+        label.form__label(for='locations') Locations
+          .locations
+            .form__group.ma-bt-md
+              label.form__label(for='locationsdescription' ) description
+              input#locationsdescription.form__input( class="locationsdescription" type='text', placeholder='Miami, USA', required, name='locationsdescription')
+            .form__group.ma-bt-md.half-width.ma-ri
+              label.form__label(for='locationscoordinates') coordinates
+              input#locationscoordinates.form__input( class="locationscoordinates" type='text', placeholder='-80.185942, 25.774772', required, name='locationscoordinates')
+            .form__group.ma-bt-md.half-width
+              label.form__label(for='locationsday') day
+              input#locationsday.form__input( class="locationsday" type='number', placeholder='1', required, name='locationsday')
+        a#addLocatios.form__link(href='#') add another date
 
         .form__group.ma-bt-md
           label.form__label Guides
           .chek__group
-            each guide in guides
+            each guide, i in guides
               .r
-                input#guides(class="guides" type='checkbox', name=`${guide.id}`, value=`${guide.id}`)
-                label.form__label(for='') #{guide.name}
+                //- input#guides(class="guides" type='checkbox', name=`${guide.id}`, value=`${guide.id}`)
+                //- label.form__label(for='') #{guide.name}
+                input(id=`${i}` class="guides" type='checkbox', name=`${guide.id}`, value=`${guide.id}`)
+                label.form__label.pointer(for=`${i}`) #{guide.name}
        
         .form__group.form__photo-upload
           img.form__user-photo(src='/img/users/default.jpg', alt='User photo')
@@ -68,7 +83,7 @@ block dash
         .form__group.form__photo-upload
           img.form__user-photo(src='/img/users/default.jpg', alt='User photo')
           input.form__upload(type='file', accept='image/*', id='image1', name='image1' multiple)
-          label(for='image1') Choose Image 
+          label(for='image1') Choose Three Images  
         .form__group.right
           button.btn.btn--small.btn--green Save Tour
 
