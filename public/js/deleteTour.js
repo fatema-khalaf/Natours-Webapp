@@ -3,7 +3,7 @@ import { showAlert } from './alert';
 
 export const deleteTour = async (id) => {
   try {
-    const url = `http://127.0.0.1:3000/api/v1/tours/${id}`;
+    const url = `/api/v1/tours/${id}`;
     console.log(url);
     const res = await axios({
       method: 'DELETE',
