@@ -32,6 +32,13 @@ router.get(
   authController.restrictTo('admin'),
   viewsController.getAddForm
 );
+router.get(
+  '/edit-tour/:slug',
+  authController.protect,
+  authController.restrictTo('admin'),
+  viewsController.getEditForm
+);
+
 // router.post(
 //   '/submit-user-data',
 //   authController.protect,

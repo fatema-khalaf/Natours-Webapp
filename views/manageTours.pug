@@ -20,7 +20,7 @@ block dash
           td=`${tour.price} $`
           td=`${tour.ratingsAverage} /5`
           td.tc
-            a(href=`/tour/edit/${tour.slug}`)
+            a(href=`/edit-tour/${tour.slug}`)
               svg.card__icon
                 use(xlink:href='img/icons.svg#icon-edit')
             a.deleteTour(href='#' data-tour-id=`${tour.id}`)

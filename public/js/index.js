@@ -7,10 +7,11 @@ import { displayMap } from './mapbox';
 import { bookTour } from './stripe';
 import { showAlert } from './alert';
 import { signup } from './signup';
+import { editTour } from './updateTour';
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const addLocatios = document.getElementById('addLocatios');
-
+const editTourForm = document.querySelector('.form-edit-tour');
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
 const userDataForm = document.querySelector('.form-user-data');
@@ -132,8 +133,9 @@ if (bookBtn)
 const alertMessage = document.querySelector('body').dataset.alert;
 if (alertMessage) showAlert('success', alertMessage);
 
-if (addTourForm) {
-  addTourForm.addEventListener('submit', (e) => {
+// if (addTourForm) {
+const formHolder = function (form, method, id) {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const form2 = new FormData(); // this form data to cary the file otherwise the file will not be sent
     form2.append('name', document.getElementById('name').value);
@@ -147,6 +149,7 @@ if (addTourForm) {
     dates.forEach((date) => {
       if (date.value) form2.append('startDates', date.value);
     });
+    form2.append('startLocation[type]', 'Point');
     form2.append(
       'startLocation[description]',
       document.getElementById('startLocationDescription').value
@@ -166,7 +169,7 @@ if (addTourForm) {
         .trim()
     );
     form2.append(
-      'startLocation[adress]',
+      'startLocation[address]',
       document.getElementById('startLocationAddress').value
     );
     const guides = document.querySelectorAll('.guides');
@@ -209,10 +212,16 @@ if (addTourForm) {
     indexes.forEach((index) => {
       form2.append('images', images[index]);
     });
-    addTour(form2);
+    method(form2, id);
   });
+};
+if (addTourForm) {
+  formHolder(addTourForm, addTour);
 }
-
+if (editTourForm) {
+  const id = document.getElementById('edit_id').value;
+  formHolder(editTourForm, editTour, id);
+}
 if (dTour)
   dTour.forEach((el) => {
     el.addEventListener('click', (e) => {

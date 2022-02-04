@@ -1,0 +1,103 @@
+extends baseaccount
+mixin option-item(value)
+  -const s = tour.difficulty === `${value}`
+    option(value=`${value}` selected =s) #{value}
+
+block dash 
+  .user-view__content
+    .user-view__form-container
+      h2.heading-secondary.ma-bt-md Edit Tour
+
+      form.form.form-edit-tour
+        .form__group
+          label.form__label(for='name') Tour Name
+          input#name.form__input(type='text', placeholder=`${tour.name}`, value=`${tour.name}`, required, name='name')
+          input#edit_id.form__input(type='hidden', value=`${tour.id}`)
+        .form__group.ma-bt-md
+          label.form__label(for='duration') Duration
+          input#duration.form__input(type='text', placeholder='Duration', value=`${tour.duration}`, required, name='duration')
+        .form__group.ma-bt-md
+          label.form__label(for='difficulty') Difficulty
+          select#difficulty.form__input(name="difficulty",  required)
+            +option-item('easy')
+            +option-item('medium')
+            +option-item('difficult')
+        .form__group.ma-bt-md
+          label.form__label(for='maxGroupSize') Max Group Size
+          input#maxGroupSize.form__input(type='number', placeholder='10',value=`${tour.maxGroupSize}`,  required, name='maxGroupSize')
+
+        .form__group.ma-bt-md
+          label.form__label(for='price') Price
+          input#price.form__input(type='number', placeholder='1',value=`${tour.price}`,  required, name='price')
+
+        .form__group.ma-bt-md
+          label.form__label(for='summary') Summary
+          input#summary.form__input(type='text', placeholder='summary',value=`${tour.summary}`,  required, name='summary')
+
+        .form__group.ma-bt-md
+          label.form__label(for='description') Description
+          textarea#description.form__input(type='text',rows="6", placeholder='description',required, name='description') #{tour.description}
+
+        .form__group.ma-bt-md
+          label.form__label(for='startDates') Start Dates
+            each date, i in tour.startDates
+              -const val = date.toISOString().split('T')[0]
+              input#startDates.mb.form__input(class="startDate" type='date', placeholder='start dates', value=`${val}`, required, name='startDates')
+          input#startDates.mb.form__input(class="startDate hide" type='date', placeholder='start dates', name='startDates')
+          input#startDates.mb.form__input(class="startDate hide" type='date', placeholder='start dates', name='startDates')
+          input#startDates.mb.form__input(class="startDate hide" type='date', placeholder='start dates', name='startDates')
+          a#addDate.form__link(href='#') add another date
+        .form__group.ma-bt-md
+          label.form__label(for='startLocationDescription') Start Location Description
+          input#startLocationDescription.form__input(type='text', required, value=`${tour.startLocation.description}`, name='startLocationDescription')
+        .form__group.ma-bt-md
+          label.form__label(for='startLocationCoordinates') Start Location coordinates
+          input#startLocationCoordinates.form__input(type='text',value=`${tour.startLocation.coordinates}`, required, name='startLocationCoordinates')
+        .form__group.ma-bt-md
+          label.form__label(for='startLocationAddress') Start Location address
+          input#startLocationAddress.form__input(type='text',value=`${tour.startLocation.address}`, required, name='startLocationAddress')
+
+
+        label.form__label(for='locations') Locations
+          each location in tour.locations
+            .locations
+              .form__group.ma-bt-md
+                label.form__label(for='locationsdescription' ) description
+                input#locationsdescription.form__input( class="locationsdescription" type='text',value=`${location.description}`,  required, name='locationsdescription')
+              .form__group.ma-bt-md.half-width.ma-ri
+                label.form__label(for='locationscoordinates') coordinates
+                input#locationscoordinates.form__input( class="locationscoordinates" type='text', value=`${location.coordinates}`, required, name='locationscoordinates')
+              .form__group.ma-bt-md.half-width
+                label.form__label(for='locationsday') day
+                input#locationsday.form__input( class="locationsday" type='number',value=`${location.day}`,, required, name='locationsday')
+        a#addLocatios.form__link(href='#') add another date
+
+        .form__group.ma-bt-md
+          label.form__label Guides
+          .chek__group
+            each guide, i in guides
+              - let r=-1
+              .r
+                each g in tour.guides 
+                  - if (g.id === guide.id )
+                    input(checked id=`${i}` class="guides" type='checkbox', name=`${guide.id}`, value=`${guide.id}`)
+                    label.form__label.pointer(for=`${i}`) #{guide.name}
+                    - r = i
+                - if (r !== i)
+                  input(id=`${i}` class="guides" type='checkbox', name=`${guide.id}`, value=`${guide.id}`)
+                  label.form__label.pointer(for=`${i}`) #{guide.name}
+
+        .form__group.form__photo-upload
+          img.form__user-photo(src=`/img/tours/${tour.imageCover}`, alt='image cover')
+          input.form__upload(type='file', accept='image/*', id='imageCover', name='imageCover')
+          label(for='imageCover') Choose Cover Image 
+
+        .form__group.form__photo-upload
+          img.form__user-photo(src='/img/users/default.jpg', alt='User photo')
+          input.form__upload(type='file', accept='image/*', id='image1', name='image1' multiple)
+          label(for='image1') Choose Three Images 
+
+        .form__group.right
+          button.btn.btn--small.btn--green Update Tour
+
+    .line &nbsp;

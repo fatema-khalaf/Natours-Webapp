@@ -82,6 +82,19 @@ exports.getAddForm = catchAsync(async (req, res) => {
   });
 });
 
+exports.getEditForm = catchAsync(async (req, res, next) => {
+  const tour = await Tour.findOne({ slug: req.params.slug });
+  const guides = await User.find({ role: { $nin: ['admin', 'user'] } });
+  if (!tour) {
+    return next(new AppError('There is no tour with that name', 404));
+  }
+  res.status(200).render('editTour', {
+    title: `Edit ${tour.name} Tour`,
+    tour,
+    guides,
+  });
+});
+
 exports.getAccount = (req, res) => {
   res.status(200).render('account', {
     title: 'Your account',
