@@ -1715,13 +1715,31 @@ body {
   padding: 8px;
 }
 
-#customers td {
+/* #customers td {
   font-size: 1.4rem;
   font-weight: 400;
+} */
+#customers td a:link,
+#customers td a:visited {
+  color: #777;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
+#customers td a:hover,
+#customers td a:active {
+  padding-left: 0.4rem;
+}
+.table__tours-photo {
+  height: 7.5rem;
+  width: 7.5rem;
+}
+
 #customers td img {
-  width: 5rem;
-  height: 5rem;
+  width: fit-content;
+  /* height: 5rem; */
 }
 
 #customers tr:nth-child(even) {

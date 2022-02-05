@@ -89,11 +89,13 @@ block dash
 
         .form__group.form__photo-upload
           img.form__user-photo(src=`/img/tours/${tour.imageCover}`, alt='image cover')
-          input.form__upload(type='file', accept='image/*', id='imageCover', name='imageCover')
+          //- input.form__upload(type='file', accept='image/*', id='imageCover', name='imageCover')
+          input.form__upload(type='file', accept='image/*',id='imageCover', name='imageCover', value=`${tour.imageCover}`)
           label(for='imageCover') Choose Cover Image 
 
         .form__group.form__photo-upload
-          img.form__user-photo(src='/img/users/default.jpg', alt='User photo')
+        each image in tour.images
+            img.form__user-photo(src=`/img/tours/${image}`, alt='Tour image')
           input.form__upload(type='file', accept='image/*', id='image1', name='image1' multiple)
           label(for='image1') Choose Three Images 
 

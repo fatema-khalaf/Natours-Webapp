@@ -206,11 +206,19 @@ const formHolder = function (form, method, id) {
       form2.append(`locations[${i}][day]`, el.value);
     });
 
-    form2.append('imageCover', document.getElementById('imageCover').files[0]);
+    // form2.append('imageCover', document.getElementById('imageCover').files[0]);
+    if (document.getElementById('imageCover').files[0]) {
+      form2.append(
+        'imageCover',
+        document.getElementById('imageCover').files[0]
+      );
+    }
     const images = document.getElementById('image1').files;
     const indexes = [0, 1, 2];
     indexes.forEach((index) => {
-      form2.append('images', images[index]);
+      if (images[index]) {
+        form2.append('images', images[index]);
+      }
     });
     method(form2, id);
   });
@@ -227,8 +235,11 @@ if (dTour)
     el.addEventListener('click', (e) => {
       const tourId = el.dataset.tourId;
       e.target.style.pointerEvents = 'none';
-      console.log(el);
-      console.log(tourId);
-      deleteTour(tourId);
+      var confirmDel = confirm(
+        'Are you sure? This will permanently delete the tour!'
+      );
+      if (confirmDel === true) {
+        deleteTour(tourId);
+      }
     });
   });
