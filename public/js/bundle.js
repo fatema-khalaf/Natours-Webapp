@@ -9688,11 +9688,19 @@ var formHolder = function formHolder(form, method, id) {
       console.log(el, i);
       form2.append("locations[".concat(i, "][day]"), el.value);
     });
-    form2.append('imageCover', document.getElementById('imageCover').files[0]);
+
+    if (document.getElementById('imageCover').files[0]) {
+      form2.append('imageCover', document.getElementById('imageCover').files[0]);
+      console.log(document.getElementById('imageCover').files[0]);
+    }
+
     var images = document.getElementById('image1').files;
     var indexes = [0, 1, 2];
     indexes.forEach(function (index) {
-      form2.append('images', images[index]);
+      if (images[index]) {
+        form2.append('images', images[index]);
+        console.log(images[index]);
+      }
     });
     method(form2, id);
     console.log(form2.entries());
@@ -9801,7 +9809,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61302" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58328" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

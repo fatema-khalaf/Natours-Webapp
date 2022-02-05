@@ -159,13 +159,23 @@ const formHolder = function (form, method, id) {
       console.log(el, i);
       form2.append(`locations[${i}][day]`, el.value);
     });
-
-    form2.append('imageCover', document.getElementById('imageCover').files[0]);
+    if (document.getElementById('imageCover').files[0]) {
+      form2.append(
+        'imageCover',
+        document.getElementById('imageCover').files[0]
+      );
+      console.log(document.getElementById('imageCover').files[0]);
+    }
     const images = document.getElementById('image1').files;
+
     const indexes = [0, 1, 2];
     indexes.forEach((index) => {
-      form2.append('images', images[index]);
+      if (images[index]) {
+        form2.append('images', images[index]);
+        console.log(images[index]);
+      }
     });
+
     method(form2, id);
     console.log(form2.entries());
   });
