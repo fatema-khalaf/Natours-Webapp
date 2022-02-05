@@ -9774,9 +9774,11 @@ if (dTour) dTour.forEach(function (el) {
   el.addEventListener('click', function (e) {
     var tourId = el.dataset.tourId;
     e.target.style.pointerEvents = 'none';
-    console.log(el);
-    console.log(tourId);
-    (0, _deleteTour.deleteTour)(tourId);
+    var confirmDel = confirm('Are you sure? This will permanently delete the tour!');
+
+    if (confirmDel === true) {
+      (0, _deleteTour.deleteTour)(tourId);
+    }
   });
 });
 var alertMessage = document.querySelector('body').dataset.alert;

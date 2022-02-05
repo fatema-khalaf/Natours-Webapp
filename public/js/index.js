@@ -224,9 +224,12 @@ if (dTour)
     el.addEventListener('click', (e) => {
       const tourId = el.dataset.tourId;
       e.target.style.pointerEvents = 'none';
-      console.log(el);
-      console.log(tourId);
-      deleteTour(tourId);
+      var confirmDel = confirm(
+        'Are you sure? This will permanently delete the tour!'
+      );
+      if (confirmDel === true) {
+        deleteTour(tourId);
+      }
     });
   });
 

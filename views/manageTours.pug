@@ -13,9 +13,10 @@ block dash
         th Actions
       each tour in tours
         tr
-          td=tour.name
+          td
+            a(href=`/tour/${tour.slug}`)=tour.name
           td.tc
-            img.form__user-photo(src=`/img/tours/${tour.imageCover}`, alt='User photo')
+            img.table__tours-photo(src=`/img/tours/${tour.imageCover}`, alt='User photo')
           td=tour.startLocation.description
           td=`${tour.price} $`
           td=`${tour.ratingsAverage} /5`

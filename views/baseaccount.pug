@@ -22,7 +22,7 @@ block content
           li(class=`${active ? 'side-nav--active': ''} nav__el--logout` )
             a(href='#')
               svg
-                use(xlink:href=`img/icons.svg#icon-star`)
+                use(xlink:href=`img/icons.svg#icon-log-out`)
               | Log out
         - if (user.role === 'admin') 
           .admin-nav
