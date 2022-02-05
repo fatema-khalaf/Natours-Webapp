@@ -94,7 +94,7 @@ block dash
           label(for='imageCover') Choose Cover Image 
 
         .form__group.form__photo-upload
-        each image in tour.images
+          each image in tour.images
             img.form__user-photo(src=`/img/tours/${image}`, alt='Tour image')
           input.form__upload(type='file', accept='image/*', id='image1', name='image1' multiple)
           label(for='image1') Choose Three Images 
