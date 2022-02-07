@@ -1,13 +1,30 @@
 const Review = require('./../models/reviewModel');
-// const catchAsync = require('./../utils/catchAsync');
-// const AppError = require('./../utils/appError');
+const catchAsync = require('./../utils/catchAsync');
+const Booking = require('./../models/bookingModel');
+
+const AppError = require('./../utils/appError');
 const factory = require('./handlerFactory');
 
 exports.setTourUserIds = (req, res, next) => {
   if (!req.body.tour) req.body.tour = req.params.tourId; // tour Id from URL params
   if (!req.body.user) req.body.user = req.user.id; // get the Loged in user Id from protect() function.
+  console.log('😵', req.params);
+  console.log('😵', req.body.tour);
   next();
 };
+
+exports.checkBookedTour = catchAsync(async (req, res, next) => {
+  const book = await Booking.findOne({
+    user: req.body.user,
+    tour: req.body.tour,
+  });
+  if (!book) {
+    return next(
+      new AppError('You do not have permission to review this tour', 403)
+    );
+  }
+  next();
+});
 
 // exports.getAllReviews = catchAsync(async (req, res, next) => {
 //   let filter = {};
