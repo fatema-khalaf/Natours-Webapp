@@ -31,7 +31,7 @@ const reviews = JSON.parse(
 const importData = async () => {
   try {
     await Tour.create(tours);
-    await User.create(users, { validateBeforeSave: false });
+    // await User.create(users, { validateBeforeSave: false });
     await Review.create(reviews);
     console.log('Added');
   } catch (err) {
@@ -43,7 +43,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Tour.deleteMany();
-    await User.deleteMany();
+    // await User.deleteMany();
     await Review.deleteMany();
     console.log('Deleted');
   } catch (err) {

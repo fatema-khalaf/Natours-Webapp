@@ -9,6 +9,13 @@ html
         link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
         link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
         script(src='https://js.stripe.com/v3/' type="text/javascript")
+          // Global site tag (gtag.js) - Google Analytics
+        script(async, src="https://www.googletagmanager.com/gtag/js?id=G-X0WQXJW8CS")
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-X0WQXJW8CS');
         title Natours | #{title}
 
     body(data-alert=`${alert ? alert :''}`) 
