@@ -19,4 +19,3 @@
    <li> mail grid</li>
    <li> stripe</li>
    </ul>
-   To preview the website please click on 👉 <a href="https://natours-f.herokuapp.com/home"> Natours by Fatema</a>
